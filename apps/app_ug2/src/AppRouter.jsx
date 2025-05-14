@@ -1,5 +1,5 @@
 
-import { ProgramPage, ProgramRouterSegment, SubjectRouterSegment } from "@hrbolek/uoisfrontend-zp";
+import { SubjectPage, SubjectRouterSegment } from "C:/Users/otaka/Documents/GitHub/frontendui/packages/semester_page_subject";
 import {
       createBrowserRouter,
       RouterProvider
@@ -11,9 +11,8 @@ export const Routes = [
     // UserRouterSegment
     {
         path: "/hello/:id",
-        element: <ProgramPage />
+        element: <SubjectPage/>
     },
-    ProgramRouterSegment,
     SubjectRouterSegment,
     
 ]
