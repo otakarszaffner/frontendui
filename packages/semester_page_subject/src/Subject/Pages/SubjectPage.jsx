@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { Children, useState } from "react"
 import { useParams } from "react-router"
 
 import { CreateDelayer, ErrorHandler, LoadingSpinner } from "@hrbolek/uoisfrontend-shared"
@@ -27,11 +27,15 @@ import { SubjectPageNavbar } from "./SubjectPageNavbar"
  * 
  * <SubjectPageContent subject={subjectEntity} />
  */
+
+
 const SubjectPageContent = ({subject}) => {
     return (<>
+        {console.log("SubjectPageContent.subject", subject)}
         <SubjectPageNavbar subject={subject} />
         <SubjectLargeCard subject={subject}>
-            <>subject.name</>
+            
+            <>{Children}</>
         </SubjectLargeCard>
     </>)
 }
