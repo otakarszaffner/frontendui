@@ -3,9 +3,10 @@ import { useParams } from "react-router"
 
 import { CreateDelayer, ErrorHandler, LoadingSpinner } from "@hrbolek/uoisfrontend-shared"
 import { useAsyncAction } from "@hrbolek/uoisfrontend-gql-shared"
-import { SubjectLargeCard } from "../Components"
+import { SubjectButton, SubjectLargeCard } from "../Components"
 import { SubjectReadAsyncAction } from "../Queries"
 import { SubjectPageNavbar } from "./SubjectPageNavbar"
+import { SubjectInsertAsyncAction } from "../Queries"
 
 /**
  * A page content component for displaying detailed information about an subject entity.
@@ -27,14 +28,44 @@ import { SubjectPageNavbar } from "./SubjectPageNavbar"
  * 
  * <SubjectPageContent subject={subjectEntity} />
  */
-const SubjectPageContent = ({subject}) => {
-    return (<>
-        <SubjectPageNavbar subject={subject} />
-        <SubjectLargeCard subject={subject}>
-            <>subject.name</>
-        </SubjectLargeCard>
-    </>)
-}
+const SubjectPageContent = ({ subject }) => {
+    const handleDone = (data) => {
+        console.log("SubjectPageContent.handleDone.data", data);
+    };
+
+    return (
+        <>
+            <SubjectPageNavbar subject={subject} />
+            <SubjectLargeCard subject={subject}>
+                <SubjectButton
+                    operation="C"
+                    subject={{ name: "New Item", name_en: "New Item EN" }}
+                    onDone={handleDone}
+                >
+                    Create Semester
+                </SubjectButton>
+                <br />
+
+                <SubjectButton
+                    operation="U"
+                    subject={subject}
+                    onDone={handleDone}
+                >
+                    Edit Semester
+                </SubjectButton>
+                <br />
+
+                <SubjectButton
+                    operation="D"
+                    subject={subject}
+                    onDone={handleDone}
+                >
+                    Delete Semester
+                </SubjectButton>
+            </SubjectLargeCard>
+        </>
+    );
+};
 
 /**
  * A lazy-loading component for displaying content of an subject entity.
