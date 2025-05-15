@@ -20,6 +20,7 @@ export const Routes = [
     },
     SubjectRouterSegment,
     
+    
 ]
 
 // const router = createBrowserRouter(Routes, {basename: "/ug"});
