@@ -31,7 +31,6 @@ const SemesterPageContent = ({semester}) => {
     return (<>
         <SemesterPageNavbar semester={semester} />
         <SemesterLargeCard semester={semester}>
-            Semester {JSON.stringify(semester)}
         </SemesterLargeCard>
     </>)
 }

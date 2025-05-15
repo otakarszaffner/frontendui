@@ -1,5 +1,5 @@
-import { SubjectRouterSegment } from "C:/Users/vojta/Documents/frontendui/packages/semester_page_subject/src/Subject/Pages/SubjectRouterSegment.jsx";
-import { SubjectPage } from "C:/Users/vojta/Documents/frontendui/packages/semester_page_subject/src/Subject/Pages/SubjectPage.jsx"
+
+import { SemesterPage, SemesterRouterSegment, SubjectPage, SubjectRouterSegment } from "C:/Users/otaka/Documents/GitHub/frontendui/packages/semester_page_subject";
 import {
       createBrowserRouter,
       RouterProvider
@@ -10,7 +10,12 @@ import {
 export const Routes = [
     // UserRouterSegment
     {
-        path: "/hello/:id",
+        path: "/semester/:id",
+        element: <SemesterPage/>
+    },
+    SemesterRouterSegment,
+    {
+        path: "/subject/:id",
         element: <SubjectPage/>
     },
     SubjectRouterSegment,

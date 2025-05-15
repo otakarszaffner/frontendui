@@ -23,10 +23,13 @@
  */
 export const SemesterMediumContent = ({semester, children}) => {
     return (
-        <>
-            SemesterMediumContent <br />
-            {JSON.stringify(semester)}
+        <div>
+            <h3>Semester Details</h3>
+            <ul>
+                <li><strong>Type:</strong> {semester.__typename}</li>
+                <li><strong>ID:</strong> {semester.id}</li>
+            </ul>
             {children}
-        </>
+        </div>
     )
 }

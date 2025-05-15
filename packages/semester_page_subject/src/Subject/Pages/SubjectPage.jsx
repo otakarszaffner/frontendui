@@ -104,6 +104,6 @@ const SubjectPageContentLazy = ({subject}) => {
  */
 export const SubjectPage = () => {
     const {id} = useParams()
-    const subject = {id}
+    const subject = {id} ? {id} : null
     return <SubjectPageContentLazy subject={subject} />
-}
+};

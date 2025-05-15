@@ -3,9 +3,14 @@ import { createQueryStrLazy } from "@hrbolek/uoisfrontend-gql-shared"
 export const SubjectLinkFragment = createQueryStrLazy(
 `
 fragment SubjectLink on SubjectGQLModel {
-  __typename
-  id
-  name
+    __typename
+    id
+    name
+    semesters {
+      created
+      order
+      id
+    }
 }
 `)
 
@@ -23,4 +28,3 @@ fragment SubjectLarge on SubjectGQLModel {
   ...SubjectMedium
 }
 `, SubjectMediumFragment)
-  
