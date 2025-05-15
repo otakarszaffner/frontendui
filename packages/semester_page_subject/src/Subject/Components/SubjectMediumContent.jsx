@@ -21,12 +21,30 @@
  *   <p>Additional information about the entity.</p>
  * </SubjectMediumContent>
  */
-export const SubjectMediumContent = ({subject, children}) => {
+export const SubjectMediumContent = ({ subject, children }) => {
     return (
-        <>
-            SubjectMediumContent <br />
-            {JSON.stringify(subject)}
+        <div>
+            <h3>Subject Details</h3>
+            <ul>
+                <li><strong>Type:</strong> {subject.__typename}</li>
+                <li><strong>Name:</strong> {subject.name}</li>
+            </ul>
+
+            {subject.semesters && subject.semesters.length > 0 && (
+                <div>
+                    <h4>Semesters</h4>
+                    <ul>
+                        {subject.semesters.map((semester) => (
+                            <li key={semester.id}>
+                                <strong>Created:</strong> {new Date(semester.created).toLocaleDateString()}<br />
+                                <strong>Order:</strong> {semester.order}<br />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+
             {children}
-        </>
-    )
-}
+        </div>
+    );
+};
