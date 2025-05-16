@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 /**
  * A component that displays medium-level content for an subject entity.
  *
@@ -22,22 +24,59 @@
  * </SubjectMediumContent>
  */
 export const SubjectMediumContent = ({ subject, children }) => {
+    const [openSemester, setOpenSemester] = useState(null);
+
+    const handleToggle = (semesterId) => {
+        setOpenSemester(openSemester === semesterId ? null : semesterId);
+    };
+
     return (
         <div>
             <h3>Subject Details</h3>
             <ul>
                 <li><strong>Type:</strong> {subject.__typename}</li>
                 <li><strong>Name:</strong> {subject.name}</li>
+                {subject.program && subject.program.name && (
+                    <li><strong>Program:</strong> {subject.program.name}</li>
+                )}
+                {subject.program && subject.program.type && subject.program.type.name && (
+                    <li><strong>Program Type:</strong> {subject.program.type.name}</li>
+                )}
             </ul>
 
             {subject.semesters && subject.semesters.length > 0 && (
                 <div>
                     <h4>Semesters</h4>
-                    <ul>
+                    <ul className="list-group mb-3">
                         {subject.semesters.map((semester) => (
-                            <li key={semester.id}>
-                                <strong>Created:</strong> {new Date(semester.created).toLocaleDateString()}<br />
-                                <strong>Order:</strong> {semester.order}<br />
+                            <li key={semester.id} className="list-group-item">
+                                <button
+                                    type="button"
+                                    onClick={() => handleToggle(semester.id)}
+                                    className="btn btn-link p-0"
+                                    style={{
+                                        fontWeight: "bold",
+                                        color: "#0d6efd",
+                                        textDecoration: "none"
+                                    }}
+                                >
+                                    Semester {semester.order}
+                                </button>
+                                <div
+                                    className={`collapse${openSemester === semester.id ? " show" : ""}`}
+                                    style={{
+                                        transition: "height 0.3s ease",
+                                        overflow: "hidden"
+                                    }}
+                                >
+                                    {openSemester === semester.id && (
+                                        <div className="mt-2 ms-3">
+                                            <div><strong>Created:</strong> {new Date(semester.created).toLocaleDateString()}</div>
+                                            <div><strong>Order:</strong> {semester.order}</div>
+                                            <div><strong>Classification Type ID:</strong> {semester.classificationtypeId}</div>
+                                        </div>
+                                    )}
+                                </div>
                             </li>
                         ))}
                     </ul>

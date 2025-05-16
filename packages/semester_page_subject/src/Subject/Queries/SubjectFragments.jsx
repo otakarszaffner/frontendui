@@ -10,7 +10,18 @@ fragment SubjectLink on SubjectGQLModel {
       created
       order
       id
+      classificationtypeId
     }
+    program {
+      name
+      type {
+        name
+        titleType {
+          name
+        }
+      }
+    }
+    
 }
 `)
 
