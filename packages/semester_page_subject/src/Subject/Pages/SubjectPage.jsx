@@ -1,14 +1,11 @@
 import React, { useState } from "react"
-import { Children } from "react"
 import { useParams } from "react-router"
-
 import { CreateDelayer, ErrorHandler, LoadingSpinner } from "@hrbolek/uoisfrontend-shared"
 import { useAsyncAction } from "@hrbolek/uoisfrontend-gql-shared"
 import { SubjectButton, SubjectLargeCard } from "../Components"
 import { SubjectReadAsyncAction } from "../Queries"
 import { SubjectPageNavbar } from "./SubjectPageNavbar"
 import { SubjectInsertAsyncAction } from "../Queries"
-import fs from "fs"; // Přidejte tento import pouze pokud běžíte v Electronu nebo Node prostředí
 
 /**
  * A page content component for displaying detailed information about an subject entity.
@@ -33,6 +30,7 @@ import fs from "fs"; // Přidejte tento import pouze pokud běžíte v Electronu
 const SubjectPageContent = ({ subject }) => {
     const [activeButton, setActiveButton] = useState(null);
     const [description, setDescription] = useState("");
+    const [activeTab, setActiveTab] = useState("main");
 
     const handleDone = (data) => {
         console.log("SubjectPageContent.handleDone.data", data);
@@ -42,75 +40,89 @@ const SubjectPageContent = ({ subject }) => {
         setActiveButton(button);
     };
 
+    // Mock: garant list, replace with real data from subject.guarants if available
+    const guarants = subject.guarants || [
+        { id: 1, name: "Mgr. Jan Novák, Ph.D." },
+        { id: 2, name: "Ing. Petra Svobodová" }
+    ];
+
     return (
         <>
             <SubjectPageNavbar subject={subject} />
             <SubjectLargeCard subject={subject}>
-                <div className="position-relative w-100">
-                    {/* Pravý horní roh: blok pro popis semestru */}
-                    <div
-                        className="position-absolute top-0 end-0 p-3 bg-light border rounded"
-                        style={{
-                            minWidth: 320,
-                            maxWidth: 600,
-                            width: "48%",
-                            zIndex: 2
-                        }}
-                    >
-                        <label htmlFor="semesterDescription" className="form-label fw-bold">
-                            Popis semestru
-                        </label>
-                        <textarea
-                            id="semesterDescription"
-                            className="form-control"
-                            rows={3}
-                            placeholder="Vepište popis semestru..."
-                            style={{ resize: "vertical" }}
-                            value={description}
-                            onChange={e => setDescription(e.target.value)}
-                        />
+                {/* Tabs navigation */}
+                <ul className="nav nav-tabs mb-3">
+                    <li className="nav-item">
                         <button
-                            className="btn btn-primary mt-2"
-                            type="button"
-                            disabled
+                            className={`nav-link${activeTab === "main" ? " active" : ""}`}
+                            onClick={() => setActiveTab("main")}
                         >
-                            Uložit
+                            Témata akreditovaného studia
                         </button>
+                    </li>
+                    <li className="nav-item">
+                        <button
+                            className={`nav-link${activeTab === "guarants" ? " active" : ""}`}
+                            onClick={() => setActiveTab("guarants")}
+                        >
+                            Seznam garantů
+                        </button>
+                    </li>
+                    <li className="nav-item">
+                        <button
+                            className={`nav-link${activeTab === "classification" ? " active" : ""}`}
+                            onClick={() => setActiveTab("classification")}
+                        >
+                            Druhy klasifikace
+                        </button>
+                    </li>
+                    <li className="nav-item">
+                        <button
+                            className={`nav-link${activeTab === "studyplan" ? " active" : ""}`}
+                            onClick={() => setActiveTab("studyplan")}
+                        >
+                            Založení plánu studia předmětu
+                        </button>
+                    </li>
+                </ul>
+
+                {/* Tab content */}
+                {activeTab === "main" && (
+                    <div className="p-3">
+                        <h5>Témata akreditovaného studia</h5>
+                        <div className="text-muted">Zde bude obsah pro témata akreditovaného studia.</div>
                     </div>
+                )}
 
-                    {/* Tlačítka vlevo nahoře */}
-                    <div className="d-flex flex-column align-items-start mb-3">
-                        <SubjectButton
-                            operation="C"
-                            subject={{ name: "New Item", name_en: "New Item EN" }}
-                            onDone={handleDone}
-                            className={`btn btn-success btn-lg mb-2${activeButton === "C" ? " active" : ""}`}
-                            onClick={() => handleButtonClick("C")}
-                        >
-                            Create Semester
-                        </SubjectButton>
-
-                        <SubjectButton
-                            operation="U"
-                            subject={subject}
-                            onDone={handleDone}
-                            className="btn btn-success btn-lg mb-2"
-                            onClick={() => handleButtonClick("U")}
-                        >
-                            Edit Semester
-                        </SubjectButton>
-
-                        <SubjectButton
-                            operation="D"
-                            subject={subject}
-                            onDone={handleDone}
-                            className="btn btn-success btn-lg mb-2"
-                            onClick={() => handleButtonClick("D")}
-                        >
-                            Delete Semester
-                        </SubjectButton>
+                {activeTab === "guarants" && (
+                    <div className="p-3">
+                        <h5>Seznam garantů předmětu</h5>
+                        <ul className="list-group">
+                            {guarants.length === 0 && (
+                                <li className="list-group-item text-muted">Žádní garanti nejsou přiřazeni.</li>
+                            )}
+                            {guarants.map(guarant => (
+                                <li key={guarant.id} className="list-group-item">
+                                    {guarant.name}
+                                </li>
+                            ))}
+                        </ul>
                     </div>
-                </div>
+                )}
+
+                {activeTab === "classification" && (
+                    <div className="p-3">
+                        <h5>Druhy klasifikace</h5>
+                        <div className="text-muted">Zde bude obsah pro druhy klasifikace.</div>
+                    </div>
+                )}
+
+                {activeTab === "studyplan" && (
+                    <div className="p-3">
+                        <h5>Založení plánu studia předmětu</h5>
+                        <div className="text-muted">Zde bude obsah pro založení plánu studia předmětu.</div>
+                    </div>
+                )}
             </SubjectLargeCard>
         </>
     );

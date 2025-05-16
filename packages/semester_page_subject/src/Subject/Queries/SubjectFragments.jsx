@@ -21,6 +21,9 @@ fragment SubjectLink on SubjectGQLModel {
         }
       }
     }
+    guarantors {
+      id
+    }
     
 }
 `)

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { SubjectButton } from "../Components";
 
 /**
  * A component that displays medium-level content for an subject entity.
@@ -25,9 +26,10 @@ import React, { useState } from "react";
  */
 export const SubjectMediumContent = ({ subject, children }) => {
     const [openSemester, setOpenSemester] = useState(null);
+    const [activeButton, setActiveButton] = useState(null);
 
-    const handleToggle = (semesterId) => {
-        setOpenSemester(openSemester === semesterId ? null : semesterId);
+    const handleButtonClick = (button) => {
+        setActiveButton(button);
     };
 
     return (
@@ -52,7 +54,7 @@ export const SubjectMediumContent = ({ subject, children }) => {
                             <li key={semester.id} className="list-group-item">
                                 <button
                                     type="button"
-                                    onClick={() => handleToggle(semester.id)}
+                                    onClick={() => setOpenSemester(openSemester === semester.id ? null : semester.id)}
                                     className="btn btn-link p-0"
                                     style={{
                                         fontWeight: "bold",
@@ -82,6 +84,39 @@ export const SubjectMediumContent = ({ subject, children }) => {
                     </ul>
                 </div>
             )}
+
+            {/* Tlačítka pro medium content */}
+            <div className="d-flex flex-row align-items-start gap-2 mb-3">
+                <SubjectButton
+                    operation="C"
+                    subject={{ name: "New Item", name_en: "New Item EN" }}
+                    onDone={() => {}}
+                    className={`btn btn-success btn-sm${activeButton === "C" ? " active" : ""}`}
+                    onClick={() => handleButtonClick("C")}
+                >
+                    Vytvoreni Semesteru
+                </SubjectButton>
+
+                <SubjectButton
+                    operation="U"
+                    subject={subject}
+                    onDone={() => {}}
+                    className="btn btn-success btn-sm"
+                    onClick={() => handleButtonClick("U")}
+                >
+                    Uprava Semesteru
+                </SubjectButton>
+
+                <SubjectButton
+                    operation="D"
+                    subject={subject}
+                    onDone={() => {}}
+                    className="btn btn-success btn-sm"
+                    onClick={() => handleButtonClick("D")}
+                >
+                    Smazani Semesteru
+                </SubjectButton>
+            </div>
 
             {children}
         </div>

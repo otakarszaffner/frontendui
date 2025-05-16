@@ -15,7 +15,7 @@ export const Routes = [
     },
     SemesterRouterSegment,
     {
-        path: "/subject/:id",
+        path: "/subject/semester/view/:id",
         element: <SubjectPage/>
     },
     SubjectRouterSegment,
