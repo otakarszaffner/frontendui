@@ -10,12 +10,14 @@ import {
 export const Routes = [
     // UserRouterSegment
     {
-        path: "/semester/:id",
+        // stary, pro inspiraci
+        path: "/semester/subject/view/:id", //http://localhost:5173/subject/semester/view/3c0f46a2-f7ba-4ae5-9a07-2c21662db562
         element: <SemesterPage/>
     },
     SemesterRouterSegment,
     {
-        path: "/subject/semester/view/:id",
+        // novy, tady na tom makej hobo
+        path: "/subject/semester/view/:id", // http://localhost:5173/semester/subject/view/49ac365e-c9be-4752-9a46-21542ed361df
         element: <SubjectPage/>
     },
     SubjectRouterSegment,
