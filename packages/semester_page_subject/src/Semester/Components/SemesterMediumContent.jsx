@@ -40,6 +40,15 @@ export const SemesterMediumContent = ({ semester, children }) => {
                 <li><strong>ID:</strong> {semester.id}</li>
                 <li><strong>Order:</strong> {semester.order}</li>
             </ul>
+             {/* Created info */}
+            <div className="mb-3">
+                <strong>Created:</strong>{" "}
+                {semester.created
+                    ? new Date(semester.created).toLocaleDateString() +
+                      " " +
+                      new Date(semester.created).toLocaleTimeString()
+                    : ""}
+            </div>
 
             {subjectArray.length > 0 && (
                 <div>
@@ -79,45 +88,9 @@ export const SemesterMediumContent = ({ semester, children }) => {
                 </div>
             )}
 
-            {/* Topics */}
-            {Array.isArray(semester.topics) && semester.topics.length > 0 && (
-                <div>
-                    <h4>Topics</h4>
-                    <ul className="list-group mb-3">
-                        {semester.topics.map((topic, idx) => (
-                            <li key={idx} className="list-group-item">
-                                <strong>{topic.name}</strong> <br />
-                                <span className="text-muted">{topic.created}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
+           
 
-            {/* Topic (singular, if present as array) */}
-            {Array.isArray(semester.topic) && semester.topic.length > 0 && (
-                <div>
-                    <h4>Topic</h4>
-                    <ul className="list-group mb-3">
-                        {semester.topic.map((topic, idx) => (
-                            <li key={idx} className="list-group-item">
-                                <strong>{topic.name}</strong> <br />
-                                <span className="text-muted">{topic.created}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            )}
-
-            {/* Created info */}
-            <div className="mb-3">
-                <strong>Created:</strong>{" "}
-                {semester.created
-                    ? new Date(semester.created).toLocaleDateString() +
-                      " " +
-                      new Date(semester.created).toLocaleTimeString()
-                    : ""}
-            </div>
+           
 
             {children}
         </div>

@@ -1,5 +1,5 @@
 
-import { SemesterPage, SemesterRouterSegment, SubjectPage, SubjectRouterSegment } from "C:/Users/otaka/Documents/GitHub/frontendui/packages/semester_page_subject";
+import { SemesterPage, SemesterRouterSegment, SubjectPage, SubjectRouterSegment } from "C:/Users/vojta/Documents/frontendui/packages/semester_page_subject";
 import {
       createBrowserRouter,
       RouterProvider

@@ -30,6 +30,7 @@ const SemesterPageContent = ({ semester }) => {
     const [activeButton, setActiveButton] = useState(null);
     const [description, setDescription] = useState("");
     const [activeTab, setActiveTab] = useState("main");
+    const [selectedTopic, setSelectedTopic] = useState(null); // Přidáno pro zobrazení topic.created
 
     const handleDone = (data) => {
         console.log("SemesterPageContent.handleDone.data", data);
@@ -83,7 +84,33 @@ const SemesterPageContent = ({ semester }) => {
                 {activeTab === "main" && (
                     <div className="p-3">
                         <h5>Témata akreditovaného studia</h5>
-                        <div className="text-muted">Zde bude obsah pro témata akreditovaného studia.</div>
+                        {/* Topics výpis s předáním callbacku */}
+                        {Array.isArray(semester.topics) && semester.topics.length > 0 && (
+                            <ul className="list-group mb-3">
+                                {semester.topics.map((topic, idx) => (
+                                    <li key={idx} className="list-group-item">
+                                        <button
+                                            type="button"
+                                            className="btn btn-link p-0"
+                                            style={{ fontWeight: "bold", color: "#0d6efd", textDecoration: "underline" }}
+                                            onClick={() => setSelectedTopic(topic)}
+                                        >
+                                            {topic.name}
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
+                        )}
+                        {/* Zobrazení detailu vybraného topicu */}
+                        {selectedTopic && (
+                            <div className="alert alert-info mt-3">
+                                <strong>Created:</strong> {selectedTopic.created}
+                            </div>
+                        )}
+                        {/* Pokud nejsou topics, zobraz defaultní text */}
+                        {(!semester.topics || semester.topics.length === 0) && (
+                            <div className="text-muted">Zde bude obsah pro témata akreditovaného studia.</div>
+                        )}
                     </div>
                 )}
 
