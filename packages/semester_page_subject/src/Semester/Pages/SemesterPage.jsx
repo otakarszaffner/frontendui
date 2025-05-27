@@ -30,7 +30,7 @@ const SemesterPageContent = ({ semester }) => {
     const [activeButton, setActiveButton] = useState(null);
     const [description, setDescription] = useState("");
     const [activeTab, setActiveTab] = useState("main");
-    const [selectedTopic, setSelectedTopic] = useState(null); // Přidáno pro zobrazení topic.created
+    const [openTopic, setOpenTopic] = useState(null);
 
     const handleDone = (data) => {
         console.log("SemesterPageContent.handleDone.data", data);
@@ -84,7 +84,7 @@ const SemesterPageContent = ({ semester }) => {
                 {activeTab === "main" && (
                     <div className="p-3">
                         <h5>Témata akreditovaného studia</h5>
-                        {/* Topics výpis s předáním callbacku */}
+                        {/* Topics výpis s vyjížděcí lištou */}
                         {Array.isArray(semester.topics) && semester.topics.length > 0 && (
                             <ul className="list-group mb-3">
                                 {semester.topics.map((topic, idx) => (
@@ -92,20 +92,38 @@ const SemesterPageContent = ({ semester }) => {
                                         <button
                                             type="button"
                                             className="btn btn-link p-0"
-                                            style={{ fontWeight: "bold", color: "#0d6efd", textDecoration: "underline" }}
-                                            onClick={() => setSelectedTopic(topic)}
+                                            style={{
+                                                fontWeight: "bold",
+                                                color: "#0d6efd",
+                                                textDecoration: "none"
+                                            }}
+                                            onClick={() => setOpenTopic(openTopic === idx ? null : idx)}
                                         >
                                             {topic.name}
                                         </button>
+                                        <div
+                                            className={`collapse${openTopic === idx ? " show" : ""}`}
+                                            style={{
+                                                transition: "height 0.3s ease",
+                                                overflow: "hidden"
+                                            }}
+                                        >
+                                            {openTopic === idx && (
+                                                <div className="mt-2 ms-3">
+                                                    <div>
+                                                        <strong>Created:</strong>{" "}
+                                                        {topic.created
+                                                            ? new Date(topic.created).toLocaleDateString() +
+                                                              " " +
+                                                              new Date(topic.created).toLocaleTimeString()
+                                                            : ""}
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </div>
                                     </li>
                                 ))}
                             </ul>
-                        )}
-                        {/* Zobrazení detailu vybraného topicu */}
-                        {selectedTopic && (
-                            <div className="alert alert-info mt-3">
-                                <strong>Created:</strong> {selectedTopic.created}
-                            </div>
                         )}
                         {/* Pokud nejsou topics, zobraz defaultní text */}
                         {(!semester.topics || semester.topics.length === 0) && (
