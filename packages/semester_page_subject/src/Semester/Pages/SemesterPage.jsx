@@ -134,17 +134,28 @@ const SemesterPageContent = ({ semester }) => {
 
                 {activeTab === "guarants" && (
                     <div className="p-3">
-                        <h5>Seznam garantů semestru</h5>
+                        <h5>Garant předmětu</h5>
                         <ul className="list-group">
-                            {Array.isArray(semester.guarantors) && semester.guarantors.length > 0 ? (
-                                semester.guarantors.map(guarant => (
-                                    <li key={guarant.id} className="list-group-item">
-                                        {guarant.name} (ID: {guarant.id})
+                            {Array.isArray(semester.subject)
+                                ? semester.subject.map((subj, subjIdx) =>
+                                    subj.guarantors && subj.guarantors.id ? (
+                                        <li key={subjIdx + "-" + subj.guarantors.id} className="list-group-item">
+                                            <strong>ID:</strong> {subj.guarantors.id}
+                                        </li>
+                                    ) : (
+                                        <li key={subjIdx + "-none"} className="list-group-item text-muted">
+                                            Žádní garanti nejsou přiřazeni.
+                                        </li>
+                                    )
+                                )
+                                : semester.subject?.guarantors && semester.subject.guarantors.id ? (
+                                    <li className="list-group-item">
+                                        <strong>ID:</strong> {semester.subject.guarantors.id}
                                     </li>
-                                ))
-                            ) : (
-                                <li className="list-group-item text-muted">Žádní garanti nejsou přiřazeni.</li>
-                            )}
+                                ) : (
+                                    <li className="list-group-item text-muted">Žádní garanti nejsou přiřazeni.</li>
+                                )
+                            }
                         </ul>
                     </div>
                 )}
@@ -154,7 +165,7 @@ const SemesterPageContent = ({ semester }) => {
                         <h5>Druhy klasifikace</h5>
                         {semester.classificationtypeId ? (
                             <div>
-                                <strong>ID klasifikace:</strong> {semester.classificationtypeId}
+                                <strong>ID:</strong> {semester.classificationtypeId}
                             </div>
                         ) : (
                             <div className="text-muted">Zde bude obsah pro druhy klasifikace.</div>

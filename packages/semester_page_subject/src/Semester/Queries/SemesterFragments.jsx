@@ -8,6 +8,9 @@ fragment SemesterLink on SemesterGQLModel {
   subject{
   id
   name
+  guarantors {
+        id
+      }
   }
   order
   classificationtypeId
