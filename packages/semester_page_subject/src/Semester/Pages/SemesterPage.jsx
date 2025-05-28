@@ -5,6 +5,7 @@ import { useAsyncAction } from "@hrbolek/uoisfrontend-gql-shared";
 import { SemesterLargeCard } from "../Components";
 import { SemesterReadAsyncAction } from "../Queries";
 import { SemesterPageNavbar } from "./SemesterPageNavbar";
+import { TopicButton } from "../../Topic/Components";
 
 /**
  * A page content component for displaying detailed information about a semester entity.
@@ -129,6 +130,36 @@ const SemesterPageContent = ({ semester }) => {
                         {(!semester.topics || semester.topics.length === 0) && (
                             <div className="text-muted">Zde bude obsah pro témata akreditovaného studia.</div>
                         )}
+                        {/* Buttons for topics */}
+                        <div className="d-flex flex-row align-items-start gap-2 mb-3">
+                            <TopicButton
+                                operation="C"
+                                topic={{ name: "New Topic" }}
+                                onDone={() => {}}
+                                className={`btn btn-success btn-sm${activeButton === "C" ? " active" : ""}`}
+                                onClick={() => handleButtonClick("C")}
+                            >
+                                Přidání tématu
+                            </TopicButton>
+                            <TopicButton
+                                operation="D"
+                                topic={semester}
+                                onDone={() => {}}
+                                className={`btn btn-danger btn-sm${activeButton === "D" ? " active" : ""}`}
+                                onClick={() => handleButtonClick("D")}
+                            >
+                                Odebrání tématu
+                            </TopicButton>
+                            <TopicButton
+                                operation="U"
+                                topic={semester}
+                                onDone={() => {}}
+                                className={`btn btn-primary btn-sm${activeButton === "U" ? " active" : ""}`}
+                                onClick={() => handleButtonClick("U")}
+                            >
+                                Update tématu
+                            </TopicButton>
+                        </div>
                     </div>
                 )}
 
