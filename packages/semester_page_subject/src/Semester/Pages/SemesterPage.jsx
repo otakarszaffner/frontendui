@@ -152,7 +152,13 @@ const SemesterPageContent = ({ semester }) => {
                 {activeTab === "classification" && (
                     <div className="p-3">
                         <h5>Druhy klasifikace</h5>
-                        <div className="text-muted">Zde bude obsah pro druhy klasifikace.</div>
+                        {semester.classificationtypeId ? (
+                            <div>
+                                <strong>ID klasifikace:</strong> {semester.classificationtypeId}
+                            </div>
+                        ) : (
+                            <div className="text-muted">Zde bude obsah pro druhy klasifikace.</div>
+                        )}
                     </div>
                 )}
 

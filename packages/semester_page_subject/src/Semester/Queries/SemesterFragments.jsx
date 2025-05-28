@@ -10,6 +10,7 @@ fragment SemesterLink on SemesterGQLModel {
   name
   }
   order
+  classificationtypeId
   created
   topics {
     name
