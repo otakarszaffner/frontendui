@@ -207,7 +207,17 @@ const SemesterPageContent = ({ semester }) => {
                 {activeTab === "studyplan" && (
                     <div className="p-3">
                         <h5>Založení plánu studia předmětu</h5>
-                        <div className="text-muted">Zde bude obsah pro založení plánu studia předmětu.</div>
+                        <form>
+                            <div className="mb-3">
+                                <label htmlFor="studyplan-date" className="form-label">Kdy byl studijní plán založen</label>
+                                <input type="date" className="form-control" id="studyplan-date" name="studyplan-date" />
+                            </div>
+                            <div className="mb-3">
+                                <label htmlFor="studyplan-author" className="form-label">Kým byl studijní plán založen</label>
+                                <input type="text" className="form-control" id="studyplan-author" name="studyplan-author" placeholder="Zadejte jméno" />
+                            </div>
+                            <button type="button" className="btn btn-primary">Založit studijní plán</button>
+                        </form>
                     </div>
                 )}
             </SemesterLargeCard>
