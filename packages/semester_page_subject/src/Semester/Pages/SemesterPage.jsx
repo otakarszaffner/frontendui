@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import { CreateDelayer, ErrorHandler, LoadingSpinner } from "@hrbolek/uoisfrontend-shared";
 import { useAsyncAction } from "@hrbolek/uoisfrontend-gql-shared";
-import { SemesterLargeCard } from "../Components";
+import { SemesterLargeCard} from "../Components";
 import { SemesterReadAsyncAction } from "../Queries";
 import { SemesterPageNavbar } from "./SemesterPageNavbar";
 import { TopicButton } from "../../Topic/Components";
+import {GuarrantMediumContent} from "../../Guarrants/src/Guarrant/Components";
 
 /**
  * A page content component for displaying detailed information about a semester entity.
@@ -128,7 +129,7 @@ const SemesterPageContent = ({ semester }) => {
                         )}
                         {/* Pokud nejsou topics, zobraz defaultní text */}
                         {(!semester.topics || semester.topics.length === 0) && (
-                            <div className="text-muted">Zde bude obsah pro témata akreditovaného studia.</div>
+                            <div className="text-muted">Obsah pro témata akreditovaného studia.</div>
                         )}
                         {/* Buttons for topics */}
                         <div className="d-flex flex-row align-items-start gap-2 mb-3">
@@ -165,28 +166,9 @@ const SemesterPageContent = ({ semester }) => {
 
                 {activeTab === "guarants" && (
                     <div className="p-3">
-                        <h5>Garant předmětu</h5>
+                        <h5>Garant předmětu:</h5>
                         <ul className="list-group">
-                            {Array.isArray(semester.subject)
-                                ? semester.subject.map((subj, subjIdx) =>
-                                    subj.guarantors && subj.guarantors.id ? (
-                                        <li key={subjIdx + "-" + subj.guarantors.id} className="list-group-item">
-                                            <strong>ID:</strong> {subj.guarantors.id}
-                                        </li>
-                                    ) : (
-                                        <li key={subjIdx + "-none"} className="list-group-item text-muted">
-                                            Žádní garanti nejsou přiřazeni.
-                                        </li>
-                                    )
-                                )
-                                : semester.subject?.guarantors && semester.subject.guarantors.id ? (
-                                    <li className="list-group-item">
-                                        <strong>ID:</strong> {semester.subject.guarantors.id}
-                                    </li>
-                                ) : (
-                                    <li className="list-group-item text-muted">Žádní garanti nejsou přiřazeni.</li>
-                                )
-                            }
+                            <GuarrantMediumContent semester={semester}/>
                         </ul>
                     </div>
                 )}
@@ -199,7 +181,7 @@ const SemesterPageContent = ({ semester }) => {
                                 <strong>ID:</strong> {semester.classificationtypeId}
                             </div>
                         ) : (
-                            <div className="text-muted">Zde bude obsah pro druhy klasifikace.</div>
+                            <div className="text-muted">Žádné druhy klasifikace.</div>
                         )}
                     </div>
                 )}

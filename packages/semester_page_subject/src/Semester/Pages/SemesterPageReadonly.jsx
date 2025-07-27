@@ -5,6 +5,7 @@ import { useAsyncAction } from "@hrbolek/uoisfrontend-gql-shared";
 import { SemesterLargeCard } from "../Components";
 import { SemesterReadAsyncAction } from "../Queries";
 import { SemesterPageNavbarReadonly } from "./SemesterPageNavbarReadonly";
+import { GuarrantMediumContentRead } from "../../Guarrants/src/Guarrant/Components/";
 
 /**
  * A readonly page content component for displaying detailed information about a semester entity.
@@ -126,28 +127,10 @@ const SemesterPageContentReadonly = ({ semester }) => {
 
                 {activeTab === "guarants" && (
                     <div className="p-3">
-                        <h5>Garant předmětu</h5>
+                        <h5>Garant předmětu:</h5>
                         <ul className="list-group">
-                            {Array.isArray(semester.subject)
-                                ? semester.subject.map((subj, subjIdx) =>
-                                    subj.guarantors && subj.guarantors.id ? (
-                                        <li key={subjIdx + "-" + subj.guarantors.id} className="list-group-item">
-                                            <strong>ID:</strong> {subj.guarantors.id}
-                                        </li>
-                                    ) : (
-                                        <li key={subjIdx + "-none"} className="list-group-item text-muted">
-                                            Žádní garanti nejsou přiřazeni.
-                                        </li>
-                                    )
-                                )
-                                : semester.subject?.guarantors && semester.subject.guarantors.id ? (
-                                    <li className="list-group-item">
-                                        <strong>ID:</strong> {semester.subject.guarantors.id}
-                                    </li>
-                                ) : (
-                                    <li className="list-group-item text-muted">Žádní garanti nejsou přiřazeni.</li>
-                                )
-                            }
+                            <GuarrantMediumContentRead semester={semester}/>
+                           
                         </ul>
                     </div>
                 )}

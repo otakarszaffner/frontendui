@@ -1,5 +1,5 @@
 
-import { SemesterPage, SemesterPageReadonly, SemesterRouterSegment, SemesterRouterSegmentReadonly, SubjectPage, SubjectPageReadonly, SubjectRouterSegment } from "C:/Users/vojta/Documents/frontendui/packages/semester_page_subject/src"
+import { SemesterPage, SemesterPageReadonly, SemesterRouterSegment, SemesterRouterSegmentReadonly, SubjectPage, SubjectPageReadonly, SubjectRouterSegment } from "@semester_page_subject";
 import {
       createBrowserRouter,
       RouterProvider
@@ -21,7 +21,7 @@ export const Routes = [
         path: "/semester/subject/readonly/:id", // http://localhost:5173/semester/subject/readonly/49ac365e-c9be-4752-9a46-21542ed361df
         element: <SemesterPageReadonly/>
     },
-    {
+    /*{
         // novy, tady na tom makej hobo
         path: "/subject/semester/view/:id", // http://localhost:5173/subject/semester/view/49ac365e-c9be-4752-9a46-21542ed361df
         element: <SubjectPage/>
@@ -30,7 +30,7 @@ export const Routes = [
         // readonly version
         path: "/subject/semester/readonly/:id", // http://localhost:5173/subject/semester/readonly/49ac365e-c9be-4752-9a46-21542ed361df
         element: <SubjectPageReadonly/>
-    },
+    },*/
     SubjectRouterSegment,
     
     

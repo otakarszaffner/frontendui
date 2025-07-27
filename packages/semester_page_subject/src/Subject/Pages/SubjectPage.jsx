@@ -1,3 +1,4 @@
+
 import React, { useState } from "react"
 import { useParams } from "react-router"
 import { CreateDelayer, ErrorHandler, LoadingSpinner } from "@hrbolek/uoisfrontend-shared"
@@ -6,6 +7,7 @@ import { SubjectButton, SubjectLargeCard } from "../Components"
 import { SubjectReadAsyncAction } from "../Queries"
 import { SubjectPageNavbar } from "./SubjectPageNavbar"
 import { SubjectInsertAsyncAction } from "../Queries"
+import { GuarrantMediumContent} from "../../Subject/Components";
 
 /**
  * A page content component for displaying detailed information about an subject entity.
@@ -94,18 +96,12 @@ const SubjectPageContent = ({ subject }) => {
                     </div>
                 )}
 
-                {activeTab === "guarants" && (
+               
+                    {activeTab === "guarants" && (
                     <div className="p-3">
-                        <h5>Seznam garantů předmětu</h5>
+                        <h5>Garant předmětu</h5>
                         <ul className="list-group">
-                            {guarants.length === 0 && (
-                                <li className="list-group-item text-muted">Žádní garanti nejsou přiřazeni.</li>
-                            )}
-                            {guarants.map(guarant => (
-                                <li key={guarant.id} className="list-group-item">
-                                    {guarant.name}
-                                </li>
-                            ))}
+                            <GuarrantMediumContent semester={subject}/>
                         </ul>
                     </div>
                 )}

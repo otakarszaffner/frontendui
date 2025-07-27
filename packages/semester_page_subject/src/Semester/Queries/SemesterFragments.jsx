@@ -5,20 +5,34 @@ export const SemesterLinkFragment = createQueryStrLazy(
 fragment SemesterLink on SemesterGQLModel {
   __typename
   id
-  subject{
-  id
-  name
-  guarantors {
-        id
-      }
-  }
   order
   classificationtypeId
   created
   topics {
     name
+    id
     created
   }
+  subject{
+  id
+  name
+  groupId
+  guarantors {
+        id
+        roles{
+          user {
+          id
+          name
+          surname
+          fullname
+          }
+        }
+          
+      
+  }
+}
+  
+  
 }
 `)
 

@@ -6,6 +6,7 @@ fragment SubjectLink on SubjectGQLModel {
     __typename
     id
     name
+    groupId
     semesters {
       created
       order
@@ -23,6 +24,13 @@ fragment SubjectLink on SubjectGQLModel {
     }
     guarantors {
       id
+      roles {
+        user {
+          id
+          name
+          surname
+        }
+      }
     }
     
 }
