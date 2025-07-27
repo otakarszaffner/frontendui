@@ -3,6 +3,7 @@ export * from './SemesterChildren'
 export * from './SemesterCUDButton'
 export * from './SemesterLargeCard'
 export * from './SemesterLink'
+export * from './SemesterLinkReadonly'
 export * from './SemesterMediumContent'
 export * from './SemesterMediumCard'
 

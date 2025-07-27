@@ -3,6 +3,7 @@ export * from './SubjectChildren'
 export * from './SubjectCUDButton'
 export * from './SubjectLargeCard'
 export * from './SubjectLink'
+export * from './SubjectLinkReadonly'
 export * from './SubjectMediumContent'
 export * from './SubjectMediumCard'
 

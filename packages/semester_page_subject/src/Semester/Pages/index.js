@@ -1,3 +1,6 @@
 export * from './SemesterPage'
 export * from './SemesterPageNavbar'
 export * from './SemesterRouterSegment'
+export * from './SemesterPageReadonly'
+export * from './SemesterPageNavbarReadonly'
+export * from './SemesterRouterSegmentReadonly'
