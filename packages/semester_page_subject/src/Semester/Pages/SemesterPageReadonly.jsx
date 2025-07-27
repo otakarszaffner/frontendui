@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { useParams } from "react-router";
 import { CreateDelayer, ErrorHandler, LoadingSpinner } from "@hrbolek/uoisfrontend-shared";
 import { useAsyncAction } from "@hrbolek/uoisfrontend-gql-shared";
-import { SemesterLargeCard } from "../Components";
+import { 
+    SemesterLargeCard,
+    SemesterPageTabs,
+    SemesterMainTabContent,
+    SemesterGuarantsTabContent,
+    SemesterClassificationTabContent
+} from "../Components";
 import { SemesterReadAsyncAction } from "../Queries";
 import { SemesterPageNavbarReadonly } from "./SemesterPageNavbarReadonly";
 import { GuarrantMediumContentRead } from "../../Guarrants/src/Guarrant/Components/";
@@ -36,112 +42,36 @@ const SemesterPageContentReadonly = ({ semester }) => {
         <>
             <SemesterPageNavbarReadonly semester={semester} />
             <SemesterLargeCard semester={semester}>
-                {/* Tabs navigation */}
-                <ul className="nav nav-tabs mb-3">
-                    <li className="nav-item">
-                        <button
-                            className={`nav-link${activeTab === "main" ? " active" : ""}`}
-                            onClick={() => setActiveTab("main")}
-                        >
-                            Témata akreditovaného studia
-                        </button>
-                    </li>
-                    <li className="nav-item">
-                        <button
-                            className={`nav-link${activeTab === "guarants" ? " active" : ""}`}
-                            onClick={() => setActiveTab("guarants")}
-                        >
-                            Seznam garantů
-                        </button>
-                    </li>
-                    <li className="nav-item">
-                        <button
-                            className={`nav-link${activeTab === "classification" ? " active" : ""}`}
-                            onClick={() => setActiveTab("classification")}
-                        >
-                            Druhy klasifikace
-                        </button>
-                    </li>
-                    
-                </ul>
+                <SemesterPageTabs 
+                    activeTab={activeTab} 
+                    onTabChange={setActiveTab} 
+                    readonly={true} 
+                />
 
-                {/* Tab content */}
                 {activeTab === "main" && (
-                    <div className="p-3">
-                        <h5>Témata akreditovaného studia</h5>
-                        {/* Topics výpis s vyjížděcí lištou */}
-                        {Array.isArray(semester.topics) && semester.topics.length > 0 && (
-                            <ul className="list-group mb-3">
-                                {semester.topics.map((topic, idx) => (
-                                    <li key={idx} className="list-group-item">
-                                        <button
-                                            type="button"
-                                            className="btn btn-link p-0"
-                                            style={{
-                                                fontWeight: "bold",
-                                                color: "#0d6efd",
-                                                textDecoration: "none"
-                                            }}
-                                            onClick={() => setOpenTopic(openTopic === idx ? null : idx)}
-                                        >
-                                            {topic.name}
-                                        </button>
-                                        <div
-                                            className={`collapse${openTopic === idx ? " show" : ""}`}
-                                            style={{
-                                                transition: "height 0.3s ease",
-                                                overflow: "hidden"
-                                            }}
-                                        >
-                                            {openTopic === idx && (
-                                                <div className="mt-2 ms-3">
-                                                    <div>
-                                                        <strong>Created:</strong>{" "}
-                                                        {topic.created
-                                                            ? new Date(topic.created).toLocaleDateString() +
-                                                              " " +
-                                                              new Date(topic.created).toLocaleTimeString()
-                                                            : ""}
-                                                    </div>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </li>
-                                ))}
-                            </ul>
-                        )}
-                        {/* Pokud nejsou topics, zobraz defaultní text */}
-                        {(!semester.topics || semester.topics.length === 0) && (
-                            <div className="text-muted">Zde bude obsah pro témata akreditovaného studia.</div>
-                        )}
-                        {/* Buttons for topics are removed in readonly view */}
-                    </div>
+                    <SemesterMainTabContent
+                        semester={semester}
+                        openTopic={openTopic}
+                        onTopicToggle={setOpenTopic}
+                        activeButton={null}
+                        onButtonClick={() => {}}
+                        readonly={true}
+                    />
                 )}
 
                 {activeTab === "guarants" && (
-                    <div className="p-3">
-                        <h5>Garant předmětu:</h5>
-                        <ul className="list-group">
-                            <GuarrantMediumContentRead semester={semester}/>
-                           
-                        </ul>
-                    </div>
+                    <SemesterGuarantsTabContent
+                        semester={semester}
+                        readonly={true}
+                    />
                 )}
 
                 {activeTab === "classification" && (
-                    <div className="p-3">
-                        <h5>Druhy klasifikace</h5>
-                        {semester.classificationtypeId ? (
-                            <div>
-                                <strong>ID:</strong> {semester.classificationtypeId}
-                            </div>
-                        ) : (
-                            <div className="text-muted">Zde bude obsah pro druhy klasifikace.</div>
-                        )}
-                    </div>
+                    <SemesterClassificationTabContent
+                        semester={semester}
+                        readonly={true}
+                    />
                 )}
-
-                
             </SemesterLargeCard>
         </>
     );
