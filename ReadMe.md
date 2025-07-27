@@ -1,27 +1,28 @@
-# Timeline of Commits and Problem Resolution
+# Časová osa commitů a řešení problémů
 
-This document outlines the development timeline, problems encountered, discoveries made, and solutions implemented during the creation of the **semester_page_subject (Supervisor View)** project.
+Tento dokument popisuje časovou osu vývoje, naražené problémy, objevy a implementovaná řešení během tvorby projektu **semester_page_subject (Pohled vedoucího)**.
 
-- **Edit URL:** `http://localhost:5173/subject/semester/view/:id/`
-- **View URL:** `http://localhost:5173/subject/semester/view/:id/`
+- **URL pro editaci:** `http://localhost:5173/subject/semester/view/:id/`  
+- **URL pro zobrazení:** `http://localhost:5173/subject/semester/view/:id/`
 
 ---
 
-## 1. Initial Monorepo Setup – Version 001
+## 1. Počáteční nastavení monorepa – Verze 001
 
-- **Date:** May 14, 2025  
+- **Datum:** 14. května 2025  
 - **Commit:** [`913ca97`](https://github.com/otakarszaffner/frontendui/commit/913ca9798f0400bbfe3c1d027f6acbb9faa190e5)
 
-We began the monorepo transition with a new version labeled **"001."** This was a work-in-progress commit to establish the baseline configuration for the new unified workspace. Key configuration files such as `vite.config.js` were adapted for shared library output and development server proxying.
+Začali jsme přechod na monorepo s novou verzí označenou jako **„001“**. Tento commit byl ve fázi rozpracovanosti a měl za cíl vytvořit výchozí konfiguraci pro nový sjednocený pracovní prostor. Klíčové konfigurační soubory jako `vite.config.js` byly upraveny pro výstup sdílené knihovny a pro proxy server vývojového prostředí.
 
-### Problem
+### Problém
 
-No major issues were encountered at this early stage, as the focus was on getting the monorepo structure operational.
+V této rané fázi jsme nenarazili na žádné zásadní problémy, protože hlavním cílem bylo zprovoznění struktury monorepa.
 
-### Resolution
+### Řešení
 
-N/A — This commit laid the groundwork for subsequent development and did not require problem-solving.
+N/A — Tento commit vytvořil základy pro další vývoj a nevyžadoval žádné řešení problémů.
 
-### References
+### Odkazy
 
-- [Monorepo Pull Request #1](https://github.com/otakarszaffner/frontendui/pull/1)
+- [Pull Request k monorepu #1](https://github.com/otakarszaffner/frontendui/pull/1)
+
