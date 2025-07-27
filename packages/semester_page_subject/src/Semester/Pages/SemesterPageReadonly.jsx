@@ -61,14 +61,7 @@ const SemesterPageContentReadonly = ({ semester }) => {
                             Druhy klasifikace
                         </button>
                     </li>
-                    <li className="nav-item">
-                        <button
-                            className={`nav-link${activeTab === "studyplan" ? " active" : ""}`}
-                            onClick={() => setActiveTab("studyplan")}
-                        >
-                            Založení plánu studia předmětu
-                        </button>
-                    </li>
+                    
                 </ul>
 
                 {/* Tab content */}
@@ -165,27 +158,7 @@ const SemesterPageContentReadonly = ({ semester }) => {
                     </div>
                 )}
 
-                {activeTab === "studyplan" && (
-                    <div className="p-3">
-                        <h5>Založení plánu studia předmětu</h5>
-                        {/* Form converted to readonly display */}
-                        <div>
-                            <div className="mb-3">
-                                <label className="form-label">Kdy byl studijní plán založen</label>
-                                <div className="form-control-plaintext">
-                                    {semester.studyplanDate ? new Date(semester.studyplanDate).toLocaleDateString() : "Neuvedeno"}
-                                </div>
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label">Kým byl studijní plán založen</label>
-                                <div className="form-control-plaintext">
-                                    {semester.studyplanAuthor || "Neuvedeno"}
-                                </div>
-                            </div>
-                            {/* Button is removed in readonly view */}
-                        </div>
-                    </div>
-                )}
+                
             </SemesterLargeCard>
         </>
     );
