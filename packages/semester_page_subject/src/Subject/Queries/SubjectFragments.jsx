@@ -7,6 +7,7 @@ fragment SubjectLink on SubjectGQLModel {
     id
     name
     groupId
+    lastchange
     semesters {
       created
       order
@@ -25,7 +26,10 @@ fragment SubjectLink on SubjectGQLModel {
     guarantors {
       id
       roles {
+      lastchange
+      id
         user {
+        lastchange
           id
           name
           surname

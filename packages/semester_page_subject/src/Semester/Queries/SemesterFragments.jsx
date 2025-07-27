@@ -20,7 +20,10 @@ fragment SemesterLink on SemesterGQLModel {
   guarantors {
         id
         roles{
+        id
+        lastchange
           user {
+          lastchange
           id
           name
           surname

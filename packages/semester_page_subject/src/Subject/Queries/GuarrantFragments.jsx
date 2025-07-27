@@ -8,6 +8,7 @@ fragment GuarrantLink on RoleGQLModel {
   id
   lastchange
   user {
+  lastchange
     id
     name
     surname

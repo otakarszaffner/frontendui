@@ -25,7 +25,7 @@ const GUARANTOR_ROLE_ID = "5f0c247e-931f-11ed-9b95-0242ac110002";
  * @example
  * <GuarrantMediumContent semester={semester} isEditable={true} />
  */
-export const GuarrantMediumContent = ({ semester, isEditable }) => {
+export const GuarrantMediumContent = ({ semester}) => {
     // State for the currently selected user to add as a guarantor
     const [selectedGuarant, setSelectedGuarant] = useState(null);
     // State for the list of guarantors
@@ -69,7 +69,7 @@ export const GuarrantMediumContent = ({ semester, isEditable }) => {
     const handleGuarantorDeleted = (guarant) => {
         setGuarantors(prev =>
             prev.filter(g =>
-                !g.roles.some(role => role.id === guarant.id)
+                !g.roles.some(role => role.user?.id === guarant.id)
             )
         );
     };
