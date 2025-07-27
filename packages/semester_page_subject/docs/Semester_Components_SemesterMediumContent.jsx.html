@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Semester/Components/SemesterMediumContent.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Semester/Components/SemesterMediumContent.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
+
+/**
+ * A component that displays medium-level content for a semester entity.
+ *
+ * This component renders details about the semester and its related subject(s),
+ * and any additional child content. It is designed to handle and display information
+ * about a semester entity object, similar to SubjectMediumContent.
+ *
+ * @component
+ * @param {Object} props - The properties for the SemesterMediumContent component.
+ * @param {Object} props.semester - The object representing the semester entity.
+ * @param {string|number} props.semester.id - The unique identifier for the semester entity.
+ * @param {string} props.semester.name - The name or label of the semester entity.
+ * @param {React.ReactNode} [props.children=null] - Additional content to render after the serialized `semester` object.
+ *
+ * @returns {JSX.Element} A JSX element displaying the entity's details and optional content.
+ */
+export const SemesterMediumContent = ({ semester, children }) => {
+    const [openSubject, setOpenSubject] = useState(null);
+    const [activeButton, setActiveButton] = useState(null);
+
+    const handleButtonClick = (button) => {
+        setActiveButton(button);
+    };
+
+    // Pokud je subject pole, vypiš všechny, pokud objekt, vypiš jeden
+    let subjectArray = [];
+    if (Array.isArray(semester.subject)) {
+        subjectArray = semester.subject;
+    } else if (semester.subject) {
+        subjectArray = [semester.subject];
+    }
+
+    return (
+        &lt;div>
+            &lt;h3>Semester Details&lt;/h3>
+            &lt;ul>
+                &lt;li>&lt;strong>Type:&lt;/strong> {semester.__typename}&lt;/li>
+                &lt;li>&lt;strong>ID:&lt;/strong> {semester.id}&lt;/li>
+                &lt;li>&lt;strong>Order:&lt;/strong> {semester.order}&lt;/li>
+            &lt;/ul>
+             {/* Created info */}
+            &lt;div className="mb-3">
+                &lt;strong>Created:&lt;/strong>{" "}
+                {semester.created
+                    ? new Date(semester.created).toLocaleDateString() +
+                      " " +
+                      new Date(semester.created).toLocaleTimeString()
+                    : ""}
+            &lt;/div>
+
+            {subjectArray.length > 0 &amp;&amp; (
+                &lt;div>
+                    &lt;h4>Subjects&lt;/h4>
+                    &lt;ul className="list-group mb-3">
+                        {subjectArray.map((subj) => (
+                            &lt;li key={subj.id || subj.name} className="list-group-item">
+                                &lt;button
+                                    type="button"
+                                    onClick={() => setOpenSubject(openSubject === subj.id ? null : subj.id)}
+                                    className="btn btn-link p-0"
+                                    style={{
+                                        fontWeight: "bold",
+                                        color: "#0d6efd",
+                                        textDecoration: "none"
+                                    }}
+                                >
+                                    {subj.name || "Subject"}
+                                &lt;/button>
+                                &lt;div
+                                    className={`collapse${openSubject === subj.id ? " show" : ""}`}
+                                    style={{
+                                        transition: "height 0.3s ease",
+                                        overflow: "hidden"
+                                    }}
+                                >
+                                    {openSubject === subj.id &amp;&amp; (
+                                        &lt;div className="mt-2 ms-3">
+                                            &lt;div>&lt;strong>Subject Name:&lt;/strong> {subj.name}&lt;/div>
+                                            &lt;div>&lt;strong>Subject ID:&lt;/strong> {subj.id}&lt;/div>
+                                        &lt;/div>
+                                    )}
+                                &lt;/div>
+                            &lt;/li>
+                        ))}
+                    &lt;/ul>
+                &lt;/div>
+            )}
+
+           
+
+           
+
+            {children}
+        &lt;/div>
+    );
+};
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#SemesterButton">SemesterButton</a></li><li><a href="global.html#SemesterCardCapsule">SemesterCardCapsule</a></li><li><a href="global.html#SemesterChildren">SemesterChildren</a></li><li><a href="global.html#SemesterLargeCard">SemesterLargeCard</a></li><li><a href="global.html#SemesterLink">SemesterLink</a></li><li><a href="global.html#SemesterMediumCard">SemesterMediumCard</a></li><li><a href="global.html#SemesterMediumContent">SemesterMediumContent</a></li><li><a href="global.html#SemesterMediumEditableContent">SemesterMediumEditableContent</a></li><li><a href="global.html#SemesterPage">SemesterPage</a></li><li><a href="global.html#SemesterPageContent">SemesterPageContent</a></li><li><a href="global.html#SemesterPageContentLazy">SemesterPageContentLazy</a></li><li><a href="global.html#SemesterPageNavbar">SemesterPageNavbar</a></li><li><a href="global.html#SemesterReadAsyncAction">SemesterReadAsyncAction</a></li><li><a href="global.html#SemesterRouterSegment">SemesterRouterSegment</a></li><li><a href="global.html#SemesterScalarAttribute">SemesterScalarAttribute</a></li><li><a href="global.html#SemesterVectorsAttribute">SemesterVectorsAttribute</a></li><li><a href="global.html#SubjectButton">SubjectButton</a></li><li><a href="global.html#SubjectCardCapsule">SubjectCardCapsule</a></li><li><a href="global.html#SubjectChildren">SubjectChildren</a></li><li><a href="global.html#SubjectLargeCard">SubjectLargeCard</a></li><li><a href="global.html#SubjectLink">SubjectLink</a></li><li><a href="global.html#SubjectMediumCard">SubjectMediumCard</a></li><li><a href="global.html#SubjectMediumContent">SubjectMediumContent</a></li><li><a href="global.html#SubjectMediumEditableContent">SubjectMediumEditableContent</a></li><li><a href="global.html#SubjectPage">SubjectPage</a></li><li><a href="global.html#SubjectPageContent">SubjectPageContent</a></li><li><a href="global.html#SubjectPageContentLazy">SubjectPageContentLazy</a></li><li><a href="global.html#SubjectPageNavbar">SubjectPageNavbar</a></li><li><a href="global.html#SubjectReadAsyncAction">SubjectReadAsyncAction</a></li><li><a href="global.html#SubjectRouterSegment">SubjectRouterSegment</a></li><li><a href="global.html#SubjectScalarAttribute">SubjectScalarAttribute</a></li><li><a href="global.html#SubjectVectorsAttribute">SubjectVectorsAttribute</a></li><li><a href="global.html#TitleNavButton">TitleNavButton</a></li><li><a href="global.html#TopicButton">TopicButton</a></li><li><a href="global.html#TopicCardCapsule">TopicCardCapsule</a></li><li><a href="global.html#TopicChildren">TopicChildren</a></li><li><a href="global.html#TopicLargeCard">TopicLargeCard</a></li><li><a href="global.html#TopicLink">TopicLink</a></li><li><a href="global.html#TopicMediumCard">TopicMediumCard</a></li><li><a href="global.html#TopicMediumContent">TopicMediumContent</a></li><li><a href="global.html#TopicMediumEditableContent">TopicMediumEditableContent</a></li><li><a href="global.html#TopicPage">TopicPage</a></li><li><a href="global.html#TopicPageContent">TopicPageContent</a></li><li><a href="global.html#TopicPageContentLazy">TopicPageContentLazy</a></li><li><a href="global.html#TopicPageNavbar">TopicPageNavbar</a></li><li><a href="global.html#TopicReadAsyncAction">TopicReadAsyncAction</a></li><li><a href="global.html#TopicRouterSegment">TopicRouterSegment</a></li><li><a href="global.html#TopicScalarAttribute">TopicScalarAttribute</a></li><li><a href="global.html#TopicVectorsAttribute">TopicVectorsAttribute</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sun Jul 27 2025 20:41:38 GMT+0200 (středoevropský letní čas)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

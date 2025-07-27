@@ -3,9 +3,9 @@ import { TopicLargeFragment } from "./TopicFragments";
 
 const TopicInsertMutation = createQueryStrLazy(
 `
-mutation TopicInsertMutation($id: UUID, $name: String, $name_en: String) {
+mutation TopicInsertMutation($id: UUID, $name: String!) {
   result: topicInsert(
-    topic: {id: $id, name: $name, nameEn: $name_en}
+    topic: {id: $id, name: $name}
   ) {
     ... on InsertError {
       failed

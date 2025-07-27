@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Subject/Pages/SubjectPageNavbar.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Subject/Pages/SubjectPageNavbar.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import Nav from 'react-bootstrap/Nav'
+import { ProxyLink, MyNavbar, useHash } from '@hrbolek/uoisfrontend-shared';
+
+import { SubjectURI } from '../Components'
+/**
+ * A navigation button component that generates a URL based on the subject's ID and a specific segment.
+ * The button uses a `ProxyLink` to navigate while preserving hash and query parameters.
+ *
+ * ### Features:
+ * - Dynamically constructs the URL with a hash fragment pointing to the specified segment.
+ * - Displays a label for the navigation link.
+ * - Integrates seamlessly with `ProxyLink` for enhanced navigation.
+ *
+ * @component
+ * @param {Object} props - The properties for the TitleNavButton component.
+ * @param {Object} props.subject - The subject object containing details about the subject.
+ * @param {string|number} props.subject.id - The unique identifier for the subject.
+ * @param {string} props.segment - The segment to append as a hash fragment in the URL.
+ * @param {string} props.label - The text to display as the label for the navigation button.
+ *
+ * @returns {JSX.Element} A styled navigation button linking to the constructed URL.
+ *
+ * @example
+ * // Example 1: Basic usage with a subject and segment
+ * const subject = { id: 123 };
+ * const segment = "details";
+ * const label = "View Details";
+ *
+ * &lt;TitleNavButton subject={subject} segment={segment} label={label} />
+ * // Resulting URL: `/ug/subject/view/123#details`
+ *
+ * @example
+ * // Example 2: Different segment and label
+ * &lt;TitleNavButton subject={{ id: 456 }} segment="settings" label="Subject Settings" />
+ * // Resulting URL: `/ug/subject/view/456#settings`
+ */
+const TitleNavButton = ({ subject, segment, label, ...props }) => {
+    // const urlbase = (segment) => `/subjects/subject/${segment}/${subject?.id}`;
+    const urlbase = (segment) => `${SubjectURI}${subject?.id}#${segment}`;
+    return (
+        &lt;Nav.Link as={"span"} {...props}>
+            &lt;ProxyLink to={urlbase(segment)}>{label}&lt;/ProxyLink>
+        &lt;/Nav.Link>
+    );
+};
+
+/**
+ * Renders the navigation bar for an Subject page.
+ *
+ * This component uses a custom hook, `useHash()`, to determine the current hash
+ * and highlights the active segment. It displays a navigation bar (using MyNavbar)
+ * with several segments (e.g. "history", "roles", "graph"), each rendered as a 
+ * TitleNavButton. The segments are hardcoded in this component and only rendered 
+ * if an `subject` object is provided.
+ *
+ * @component
+ * @param {Object} props - The component properties.
+ * @param {Object} props.subject - The subject entity object that provides context for the page.
+ * @param {string|number} props.subject.id - The unique identifier for the subject.
+ * @param {Function} props.onSearchChange - Callback function to handle changes in the search input.
+ *
+ * @returns {JSX.Element} The rendered SubjectPageNavbar component.
+ *
+ * @example
+ * // Example usage:
+ * const subject = { id: 123, ... };
+ * &lt;SubjectPageNavbar subject={subject} onSearchChange={handleSearchChange} />
+ */
+export const SubjectPageNavbar = ({ subject, onSearchChange }) => {
+    const [currentHash, setHash] = useHash(); // Use the custom hook to manage hash
+
+    const segments = [
+        { segment: 'history', label: 'Historie'},
+        // { segment: 'permissions', label: 'Práva' },
+        { segment: 'roles', label: 'Role' },
+        // { segment: 'library', label: 'Knihovna' },
+        { segment: 'graph', label: 'Stavy' },
+    ]
+    return (
+        &lt;div className='screen-only'>
+        &lt;MyNavbar onSearchChange={onSearchChange} >
+            {subject &amp;&amp; segments.map(({ segment, label }) => (
+                &lt;Nav.Item key={segment} >
+                    &lt;TitleNavButton
+                        subject={subject}
+                        segment={segment}
+                        label={label}
+                        className={segment===currentHash?"active":""} aria-current={segment===currentHash?"page":undefined}
+                    />
+                &lt;/Nav.Item>
+            ))}
+      &lt;/MyNavbar>
+      &lt;/div>
+    );
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#SemesterButton">SemesterButton</a></li><li><a href="global.html#SemesterCardCapsule">SemesterCardCapsule</a></li><li><a href="global.html#SemesterChildren">SemesterChildren</a></li><li><a href="global.html#SemesterLargeCard">SemesterLargeCard</a></li><li><a href="global.html#SemesterLink">SemesterLink</a></li><li><a href="global.html#SemesterMediumCard">SemesterMediumCard</a></li><li><a href="global.html#SemesterMediumContent">SemesterMediumContent</a></li><li><a href="global.html#SemesterMediumEditableContent">SemesterMediumEditableContent</a></li><li><a href="global.html#SemesterPage">SemesterPage</a></li><li><a href="global.html#SemesterPageContent">SemesterPageContent</a></li><li><a href="global.html#SemesterPageContentLazy">SemesterPageContentLazy</a></li><li><a href="global.html#SemesterPageNavbar">SemesterPageNavbar</a></li><li><a href="global.html#SemesterReadAsyncAction">SemesterReadAsyncAction</a></li><li><a href="global.html#SemesterRouterSegment">SemesterRouterSegment</a></li><li><a href="global.html#SemesterScalarAttribute">SemesterScalarAttribute</a></li><li><a href="global.html#SemesterVectorsAttribute">SemesterVectorsAttribute</a></li><li><a href="global.html#SubjectButton">SubjectButton</a></li><li><a href="global.html#SubjectCardCapsule">SubjectCardCapsule</a></li><li><a href="global.html#SubjectChildren">SubjectChildren</a></li><li><a href="global.html#SubjectLargeCard">SubjectLargeCard</a></li><li><a href="global.html#SubjectLink">SubjectLink</a></li><li><a href="global.html#SubjectMediumCard">SubjectMediumCard</a></li><li><a href="global.html#SubjectMediumContent">SubjectMediumContent</a></li><li><a href="global.html#SubjectMediumEditableContent">SubjectMediumEditableContent</a></li><li><a href="global.html#SubjectPage">SubjectPage</a></li><li><a href="global.html#SubjectPageContent">SubjectPageContent</a></li><li><a href="global.html#SubjectPageContentLazy">SubjectPageContentLazy</a></li><li><a href="global.html#SubjectPageNavbar">SubjectPageNavbar</a></li><li><a href="global.html#SubjectReadAsyncAction">SubjectReadAsyncAction</a></li><li><a href="global.html#SubjectRouterSegment">SubjectRouterSegment</a></li><li><a href="global.html#SubjectScalarAttribute">SubjectScalarAttribute</a></li><li><a href="global.html#SubjectVectorsAttribute">SubjectVectorsAttribute</a></li><li><a href="global.html#TitleNavButton">TitleNavButton</a></li><li><a href="global.html#TopicButton">TopicButton</a></li><li><a href="global.html#TopicCardCapsule">TopicCardCapsule</a></li><li><a href="global.html#TopicChildren">TopicChildren</a></li><li><a href="global.html#TopicLargeCard">TopicLargeCard</a></li><li><a href="global.html#TopicLink">TopicLink</a></li><li><a href="global.html#TopicMediumCard">TopicMediumCard</a></li><li><a href="global.html#TopicMediumContent">TopicMediumContent</a></li><li><a href="global.html#TopicMediumEditableContent">TopicMediumEditableContent</a></li><li><a href="global.html#TopicPage">TopicPage</a></li><li><a href="global.html#TopicPageContent">TopicPageContent</a></li><li><a href="global.html#TopicPageContentLazy">TopicPageContentLazy</a></li><li><a href="global.html#TopicPageNavbar">TopicPageNavbar</a></li><li><a href="global.html#TopicReadAsyncAction">TopicReadAsyncAction</a></li><li><a href="global.html#TopicRouterSegment">TopicRouterSegment</a></li><li><a href="global.html#TopicScalarAttribute">TopicScalarAttribute</a></li><li><a href="global.html#TopicVectorsAttribute">TopicVectorsAttribute</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sun Jul 27 2025 20:41:38 GMT+0200 (středoevropský letní čas)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
