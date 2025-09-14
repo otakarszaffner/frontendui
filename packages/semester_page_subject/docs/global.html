@@ -1,0 +1,6129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Global</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Global</h1>
+
+    
+
+
+
+
+<section>
+
+<header>
+    
+        <h2></h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+        
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="SemesterButton"><span class="type-signature">(constant) </span>SemesterButton<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>SemesterCUDButton Component</p>
+<p>A higher-order component that dynamically renders one of the following components
+based on the <code>operation</code> prop:</p>
+<ul>
+<li><code>InsertSemesterButton</code> for creating a new item (operation &quot;C&quot;)</li>
+<li><code>UpdateSemesterButton</code> for updating an existing item (operation &quot;U&quot;)</li>
+<li><code>DeleteSemesterButton</code> for deleting an existing item (operation &quot;D&quot;)</li>
+</ul>
+<p>This component validates the <code>semester</code> prop:</p>
+<ul>
+<li>For &quot;C&quot; (create), <code>semester</code> can be any object (no restrictions).</li>
+<li>For &quot;U&quot; (update) and &quot;D&quot; (delete), <code>semester</code> must include an <code>id</code> key.</li>
+</ul>
+<p>If the <code>operation</code> prop is invalid or required conditions for <code>semester</code> are not met,
+an <code>ErrorHandler</code> component is rendered with an appropriate error message.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterCUDButton.jsx.html">Semester/Components/SemesterCUDButton.jsx</a>, <a href="Semester_Components_SemesterCUDButton.jsx.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example Usageconst Example = () => {  const handleDone = (data) => console.log("Operation completed:", data);  return (    &lt;>      &lt;SemesterCUDButton        operation="C"        semester={{ name: "New Item", name_en: "New Item EN" }}        onDone={handleDone}      >        Insert      &lt;/SemesterCUDButton>      &lt;SemesterCUDButton        operation="U"        semester={{ id: "123", name: "Updated Item", name_en: "Updated Item EN" }}        onDone={handleDone}      >        Update      &lt;/SemesterCUDButton>      &lt;SemesterCUDButton        operation="D"        semester={{ id: "123" }}        onDone={handleDone}      >        Delete      &lt;/SemesterCUDButton>    &lt;/>  );};</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterCardCapsule"><span class="type-signature">(constant) </span>SemesterCardCapsule<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A specialized card component that displays an <code>SemesterLink</code> as its title and encapsulates additional content.</p>
+<p>This component extends the <code>CardCapsule</code> component by using a combination of a <code>PersonFill</code> icon and
+an <code>SemesterLink</code> component in the card's header. The <code>children</code> prop is used to render any content
+inside the card body. It is designed for use with entities represented by the <code>semester</code> object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterCardCapsule.jsx.html">Semester/Components/SemesterCardCapsule.jsx</a>, <a href="Semester_Components_SemesterCardCapsule.jsx.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:import { SemesterCardCapsule } from './SemesterCardCapsule';import { Button } from 'react-bootstrap';const semesterEntity = { id: 123, name: "Example Entity" };&lt;SemesterCardCapsule semester={semesterEntity}>  &lt;Button variant="primary">Click Me&lt;/Button>&lt;/SemesterCardCapsule></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterChildren"><span class="type-signature">(constant) </span>SemesterChildren<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>SemesterChildren Component</p>
+<p>A utility React component that wraps its children with the <code>ChildWrapper</code> component,
+passing down an <code>semester</code> entity along with other props to all child elements.
+This component is useful for injecting a common <code>semester</code> entity into multiple children
+while preserving their existing functionality.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterChildren.jsx.html">Semester/Components/SemesterChildren.jsx</a>, <a href="Semester_Components_SemesterChildren.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterEntity = { id: 1, message: "No data available" };&lt;SemesterChildren semester={semesterEntity}>    &lt;CustomMessage />    &lt;CustomIcon />&lt;/SemesterChildren>// Result: Both &lt;CustomMessage /> and &lt;CustomIcon /> receive the 'semester' prop with the specified entity.</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterLargeCard"><span class="type-signature">(constant) </span>SemesterLargeCard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A large card component for displaying detailed content and layout for an semester entity.</p>
+<p>This component wraps an <code>SemesterCardCapsule</code> with a flexible layout that includes multiple
+columns. It uses a <code>Row</code> layout with a <code>LeftColumn</code> for displaying an <code>SemesterMediumCard</code>
+and a <code>MiddleColumn</code> for rendering additional children.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterLargeCard.jsx.html">Semester/Components/SemesterLargeCard.jsx</a>, <a href="Semester_Components_SemesterLargeCard.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterEntity = { id: 123, name: "Sample Entity" };&lt;SemesterLargeCard semester={semesterEntity}>  &lt;p>Additional content for the middle column.&lt;/p>&lt;/SemesterLargeCard></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterMediumCard"><span class="type-signature">(constant) </span>SemesterMediumCard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A card component that displays detailed content for an semester entity.</p>
+<p>This component combines <code>SemesterCardCapsule</code> and <code>SemesterMediumContent</code> to create a card layout
+with a title and medium-level content. The title includes a <code>PersonFill</code> icon and a link to
+the semester entity's details, while the body displays serialized details of the entity along
+with any additional children passed to the component.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterMediumCard.jsx.html">Semester/Components/SemesterMediumCard.jsx</a>, <a href="Semester_Components_SemesterMediumCard.jsx.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterEntity = { id: 123, name: "Sample Entity" };&lt;SemesterMediumCard semester={semesterEntity}>  &lt;p>Additional details or actions for the entity.&lt;/p>&lt;/SemesterMediumCard></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterMediumContent"><span class="type-signature">(constant) </span>SemesterMediumContent<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component that displays medium-level content for a semester entity.</p>
+<p>This component renders details about the semester and its related subject(s),
+and any additional child content. It is designed to handle and display information
+about a semester entity object, similar to SubjectMediumContent.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterMediumContent.jsx.html">Semester/Components/SemesterMediumContent.jsx</a>, <a href="Semester_Components_SemesterMediumContent.jsx.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="SemesterMediumEditableContent"><span class="type-signature">(constant) </span>SemesterMediumEditableContent<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component that displays medium-level content for an semester entity.</p>
+<p>This component renders a label &quot;SemesterMediumContent&quot; followed by a serialized representation of the <code>semester</code> object
+and any additional child content. It is designed to handle and display information about an semester entity object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterMediumEditableContent.jsx.html">Semester/Components/SemesterMediumEditableContent.jsx</a>, <a href="Semester_Components_SemesterMediumEditableContent.jsx.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterEntity = { id: 123, name: "Sample Entity" };&lt;SemesterMediumContent semester={semesterEntity}>  &lt;p>Additional information about the entity.&lt;/p>&lt;/SemesterMediumContent></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterPage"><span class="type-signature">(constant) </span>SemesterPage<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A page component for displaying lazy-loaded content of a semester entity.</p>
+<p>This component extracts the <code>id</code> parameter from the route using <code>useParams</code>,
+constructs a <code>semester</code> object, and passes it to the <code>SemesterPageContentLazy</code> component.
+The <code>SemesterPageContentLazy</code> component handles the lazy-loading and rendering of the entity's content.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Pages_SemesterPage.jsx.html">Semester/Pages/SemesterPage.jsx</a>, <a href="Semester_Pages_SemesterPage.jsx.html#line288">line 288</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example route setup:&lt;Route path="/semester/:id" element={&lt;SemesterPage />} />// Navigating to "/semester/12345" will render the page for the semester entity with ID 12345.</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterPageContentLazy"><span class="type-signature">(constant) </span>SemesterPageContentLazy<span class="type-signature"> :React.Component</span></h4>
+
+
+
+
+<div class="description">
+    <p>A lazy-loading component for displaying content of a semester entity.</p>
+<p>This component is created using <code>createLazyComponent</code> and wraps <code>SemesterPageContent</code> to provide
+automatic data fetching for the <code>semester</code> entity. It uses the <code>SemesterReadAsyncAction</code> to fetch
+the entity data and dynamically injects it into the wrapped component as the <code>semester</code> prop.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">React.Component</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Pages_SemesterPage.jsx.html">Semester/Pages/SemesterPage.jsx</a>, <a href="Semester_Pages_SemesterPage.jsx.html#line250">line 250</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterId = "12345";&lt;SemesterPageContentLazy semester={semesterId} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterPageNavbar"><span class="type-signature">(constant) </span>SemesterPageNavbar<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Renders the navigation bar for an Semester page.</p>
+<p>This component uses a custom hook, <code>useHash()</code>, to determine the current hash
+and highlights the active segment. It displays a navigation bar (using MyNavbar)
+with several segments (e.g. &quot;history&quot;, &quot;roles&quot;, &quot;graph&quot;), each rendered as a
+TitleNavButton. The segments are hardcoded in this component and only rendered
+if an <code>semester</code> object is provided.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Pages_SemesterPageNavbar.jsx.html">Semester/Pages/SemesterPageNavbar.jsx</a>, <a href="Semester_Pages_SemesterPageNavbar.jsx.html#line69">line 69</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semester = { id: 123, ... };&lt;SemesterPageNavbar semester={semester} onSearchChange={handleSearchChange} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterReadAsyncAction"><span class="type-signature">(constant) </span>SemesterReadAsyncAction<span class="type-signature"> :function</span></h4>
+
+
+
+
+<div class="description">
+    <p>An async action for executing a GraphQL query to read semester entities.</p>
+<p>This action is created using <code>createAsyncGraphQLAction</code> with a predefined <code>SemesterQueryRead</code> query.
+It can be dispatched with query variables to fetch data related to semester entities from the GraphQL API.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Queries_SemesterReadAsyncAction.jsx.html">Semester/Queries/SemesterReadAsyncAction.jsx</a>, <a href="Semester_Queries_SemesterReadAsyncAction.jsx.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const queryVariables = { id: "12345" };dispatch(SemesterReadAsyncAction(queryVariables))  .then((result) => {    console.log("Fetched data:", result);  })  .catch((error) => {    console.error("Error fetching data:", error);  });</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterRouterSegment"><span class="type-signature">(constant) </span>SemesterRouterSegment<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    <p>A router segment definition for the Semester page.</p>
+<p>This object defines a route path and its associated React element.
+The <code>path</code> property is constructed using a base URI stored in <code>SemesterURI</code>
+and expects an <code>id</code> parameter. The <code>element</code> property specifies the React
+component to render when the route matches.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The URL path pattern for the route, e.g., &quot;/semester/semester/view/:id&quot;.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSX.Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The React element (component) to render, in this case, <SemesterPage />.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Pages_SemesterRouterSegment.jsx.html">Semester/Pages/SemesterRouterSegment.jsx</a>, <a href="Semester_Pages_SemesterRouterSegment.jsx.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="SemesterScalarAttribute"><span class="type-signature">(constant) </span>SemesterScalarAttribute<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component for displaying the <code>scalar</code> attribute of an semester entity.</p>
+<p>This component checks if the <code>scalar</code> attribute exists on the <code>semester</code> object. If <code>scalar</code> is undefined,
+the component returns <code>null</code> and renders nothing. Otherwise, it displays a placeholder message
+and a JSON representation of the <code>scalar</code> attribute.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Scalars_SemesterScalarAttribute.jsx.html">Semester/Scalars/SemesterScalarAttribute.jsx</a>, <a href="Semester_Scalars_SemesterScalarAttribute.jsx.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterEntity = { scalar: { id: 1, name: "Sample Scalar" } };&lt;SemesterScalarAttribute semester={semesterEntity} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SemesterVectorsAttribute"><span class="type-signature">(constant) </span>SemesterVectorsAttribute<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component for displaying the <code>vectors</code> attribute of an semester entity.</p>
+<p>This component checks if the <code>vectors</code> attribute exists on the <code>semester</code> object. If <code>vectors</code> is undefined,
+the component returns <code>null</code> and renders nothing. Otherwise, it maps over the <code>vectors</code> array and
+displays a placeholder message and a JSON representation for each item in the <code>vectors</code>.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Vectors_SemesterVectorsAttribute.jsx.html">Semester/Vectors/SemesterVectorsAttribute.jsx</a>, <a href="Semester_Vectors_SemesterVectorsAttribute.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterEntity = {   vectors: [    { id: 1, name: "Vector Item 1" },     { id: 2, name: "Vector Item 2" }  ] };&lt;SemesterVectorsAttribute semester={semesterEntity} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectButton"><span class="type-signature">(constant) </span>SubjectButton<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>SubjectCUDButton Component</p>
+<p>A higher-order component that dynamically renders one of the following components
+based on the <code>operation</code> prop:</p>
+<ul>
+<li><code>InsertSubjectButton</code> for creating a new item (operation &quot;C&quot;)</li>
+<li><code>UpdateSubjectButton</code> for updating an existing item (operation &quot;U&quot;)</li>
+<li><code>DeleteSubjectButton</code> for deleting an existing item (operation &quot;D&quot;)</li>
+</ul>
+<p>This component validates the <code>subject</code> prop:</p>
+<ul>
+<li>For &quot;C&quot; (create), <code>subject</code> can be any object (no restrictions).</li>
+<li>For &quot;U&quot; (update) and &quot;D&quot; (delete), <code>subject</code> must include an <code>id</code> key.</li>
+</ul>
+<p>If the <code>operation</code> prop is invalid or required conditions for <code>subject</code> are not met,
+an <code>ErrorHandler</code> component is rendered with an appropriate error message.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectCUDButton.jsx.html">Subject/Components/SubjectCUDButton.jsx</a>, <a href="Subject_Components_SubjectCUDButton.jsx.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example Usageconst Example = () => {  const handleDone = (data) => console.log("Operation completed:", data);  return (    &lt;>      &lt;SubjectCUDButton        operation="C"        subject={{ name: "New Item", name_en: "New Item EN" }}        onDone={handleDone}      >        Insert      &lt;/SubjectCUDButton>      &lt;SubjectCUDButton        operation="U"        subject={{ id: "123", name: "Updated Item", name_en: "Updated Item EN" }}        onDone={handleDone}      >        Update      &lt;/SubjectCUDButton>      &lt;SubjectCUDButton        operation="D"        subject={{ id: "123" }}        onDone={handleDone}      >        Delete      &lt;/SubjectCUDButton>    &lt;/>  );};</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectCardCapsule"><span class="type-signature">(constant) </span>SubjectCardCapsule<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A specialized card component that displays an <code>SubjectLink</code> as its title and encapsulates additional content.</p>
+<p>This component extends the <code>CardCapsule</code> component by using a combination of a <code>PersonFill</code> icon and
+an <code>SubjectLink</code> component in the card's header. The <code>children</code> prop is used to render any content
+inside the card body. It is designed for use with entities represented by the <code>subject</code> object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectCardCapsule.jsx.html">Subject/Components/SubjectCardCapsule.jsx</a>, <a href="Subject_Components_SubjectCardCapsule.jsx.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:import { SubjectCardCapsule } from './SubjectCardCapsule';import { Button } from 'react-bootstrap';const subjectEntity = { id: 123, name: "Example Entity" };&lt;SubjectCardCapsule subject={subjectEntity}>  &lt;Button variant="primary">Click Me&lt;/Button>&lt;/SubjectCardCapsule></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectChildren"><span class="type-signature">(constant) </span>SubjectChildren<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>SubjectChildren Component</p>
+<p>A utility React component that wraps its children with the <code>ChildWrapper</code> component,
+passing down an <code>subject</code> entity along with other props to all child elements.
+This component is useful for injecting a common <code>subject</code> entity into multiple children
+while preserving their existing functionality.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectChildren.jsx.html">Subject/Components/SubjectChildren.jsx</a>, <a href="Subject_Components_SubjectChildren.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = { id: 1, message: "No data available" };&lt;SubjectChildren subject={subjectEntity}>    &lt;CustomMessage />    &lt;CustomIcon />&lt;/SubjectChildren>// Result: Both &lt;CustomMessage /> and &lt;CustomIcon /> receive the 'subject' prop with the specified entity.</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectLargeCard"><span class="type-signature">(constant) </span>SubjectLargeCard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A large card component for displaying detailed content and layout for an subject entity.</p>
+<p>This component wraps an <code>SubjectCardCapsule</code> with a flexible layout that includes multiple
+columns. It uses a <code>Row</code> layout with a <code>LeftColumn</code> for displaying an <code>SubjectMediumCard</code>
+and a <code>MiddleColumn</code> for rendering additional children.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectLargeCard.jsx.html">Subject/Components/SubjectLargeCard.jsx</a>, <a href="Subject_Components_SubjectLargeCard.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = { id: 123, name: "Sample Entity" };&lt;SubjectLargeCard subject={subjectEntity}>  &lt;p>Additional content for the middle column.&lt;/p>&lt;/SubjectLargeCard></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectMediumCard"><span class="type-signature">(constant) </span>SubjectMediumCard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A card component that displays detailed content for an subject entity.</p>
+<p>This component combines <code>SubjectCardCapsule</code> and <code>SubjectMediumContent</code> to create a card layout
+with a title and medium-level content. The title includes a <code>PersonFill</code> icon and a link to
+the subject entity's details, while the body displays serialized details of the entity along
+with any additional children passed to the component.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectMediumCard.jsx.html">Subject/Components/SubjectMediumCard.jsx</a>, <a href="Subject_Components_SubjectMediumCard.jsx.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = { id: 123, name: "Sample Entity" };&lt;SubjectMediumCard subject={subjectEntity}>  &lt;p>Additional details or actions for the entity.&lt;/p>&lt;/SubjectMediumCard></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectMediumContent"><span class="type-signature">(constant) </span>SubjectMediumContent<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component that displays medium-level content for an subject entity.</p>
+<p>This component renders a label &quot;SubjectMediumContent&quot; followed by a serialized representation of the <code>subject</code> object
+and any additional child content. It is designed to handle and display information about an subject entity object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectMediumContent.jsx.html">Subject/Components/SubjectMediumContent.jsx</a>, <a href="Subject_Components_SubjectMediumContent.jsx.html#line27">line 27</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = { id: 123, name: "Sample Entity" };&lt;SubjectMediumContent subject={subjectEntity}>  &lt;p>Additional information about the entity.&lt;/p>&lt;/SubjectMediumContent></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectMediumEditableContent"><span class="type-signature">(constant) </span>SubjectMediumEditableContent<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component that displays medium-level content for an subject entity.</p>
+<p>This component renders a label &quot;SubjectMediumContent&quot; followed by a serialized representation of the <code>subject</code> object
+and any additional child content. It is designed to handle and display information about an subject entity object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectMediumEditableContent.jsx.html">Subject/Components/SubjectMediumEditableContent.jsx</a>, <a href="Subject_Components_SubjectMediumEditableContent.jsx.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = { id: 123, name: "Sample Entity" };&lt;SubjectMediumContent subject={subjectEntity}>  &lt;p>Additional information about the entity.&lt;/p>&lt;/SubjectMediumContent></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectPage"><span class="type-signature">(constant) </span>SubjectPage<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A page component for displaying lazy-loaded content of an subject entity.</p>
+<p>This component extracts the <code>id</code> parameter from the route using <code>useParams</code>,
+constructs an <code>subject</code> object, and passes it to the <code>SubjectPageContentLazy</code> component.
+The <code>SubjectPageContentLazy</code> component handles the lazy-loading and rendering of the entity's content.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Pages_SubjectPage.jsx.html">Subject/Pages/SubjectPage.jsx</a>, <a href="Subject_Pages_SubjectPage.jsx.html#line193">line 193</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example route setup:&lt;Route path="/subject/:id" element={&lt;SubjectPage />} />// Navigating to "/subject/12345" will render the page for the subject entity with ID 12345.</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectPageContentLazy"><span class="type-signature">(constant) </span>SubjectPageContentLazy<span class="type-signature"> :React.Component</span></h4>
+
+
+
+
+<div class="description">
+    <p>A lazy-loading component for displaying content of an subject entity.</p>
+<p>This component is created using <code>createLazyComponent</code> and wraps <code>SubjectPageContent</code> to provide
+automatic data fetching for the <code>subject</code> entity. It uses the <code>SubjectReadAsyncAction</code> to fetch
+the entity data and dynamically injects it into the wrapped component as the <code>subject</code> prop.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">React.Component</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Pages_SubjectPage.jsx.html">Subject/Pages/SubjectPage.jsx</a>, <a href="Subject_Pages_SubjectPage.jsx.html#line153">line 153</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectId = "12345";&lt;SubjectPageContentLazy subject={subjectId} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectPageNavbar"><span class="type-signature">(constant) </span>SubjectPageNavbar<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Renders the navigation bar for an Subject page.</p>
+<p>This component uses a custom hook, <code>useHash()</code>, to determine the current hash
+and highlights the active segment. It displays a navigation bar (using MyNavbar)
+with several segments (e.g. &quot;history&quot;, &quot;roles&quot;, &quot;graph&quot;), each rendered as a
+TitleNavButton. The segments are hardcoded in this component and only rendered
+if an <code>subject</code> object is provided.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Pages_SubjectPageNavbar.jsx.html">Subject/Pages/SubjectPageNavbar.jsx</a>, <a href="Subject_Pages_SubjectPageNavbar.jsx.html#line69">line 69</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subject = { id: 123, ... };&lt;SubjectPageNavbar subject={subject} onSearchChange={handleSearchChange} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectReadAsyncAction"><span class="type-signature">(constant) </span>SubjectReadAsyncAction<span class="type-signature"> :function</span></h4>
+
+
+
+
+<div class="description">
+    <p>An async action for executing a GraphQL query to read subject entities.</p>
+<p>This action is created using <code>createAsyncGraphQLAction</code> with a predefined <code>SubjectQueryRead</code> query.
+It can be dispatched with query variables to fetch data related to subject entities from the GraphQL API.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Queries_SubjectReadAsyncAction.jsx.html">Subject/Queries/SubjectReadAsyncAction.jsx</a>, <a href="Subject_Queries_SubjectReadAsyncAction.jsx.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const queryVariables = { id: "12345" };dispatch(SubjectReadAsyncAction(queryVariables))  .then((result) => {    console.log("Fetched data:", result);  })  .catch((error) => {    console.error("Error fetching data:", error);  });</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectRouterSegment"><span class="type-signature">(constant) </span>SubjectRouterSegment<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    <p>A router segment definition for the Subject page.</p>
+<p>This object defines a route path and its associated React element.
+The <code>path</code> property is constructed using a base URI stored in <code>SubjectURI</code>
+and expects an <code>id</code> parameter. The <code>element</code> property specifies the React
+component to render when the route matches.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The URL path pattern for the route, e.g., &quot;/subject/subject/view/:id&quot;.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSX.Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The React element (component) to render, in this case, <SubjectPage />.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Pages_SubjectRouterSegment.jsx.html">Subject/Pages/SubjectRouterSegment.jsx</a>, <a href="Subject_Pages_SubjectRouterSegment.jsx.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="SubjectScalarAttribute"><span class="type-signature">(constant) </span>SubjectScalarAttribute<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component for displaying the <code>scalar</code> attribute of an subject entity.</p>
+<p>This component checks if the <code>scalar</code> attribute exists on the <code>subject</code> object. If <code>scalar</code> is undefined,
+the component returns <code>null</code> and renders nothing. Otherwise, it displays a placeholder message
+and a JSON representation of the <code>scalar</code> attribute.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Scalars_SubjectScalarAttribute.jsx.html">Subject/Scalars/SubjectScalarAttribute.jsx</a>, <a href="Subject_Scalars_SubjectScalarAttribute.jsx.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = { scalar: { id: 1, name: "Sample Scalar" } };&lt;SubjectScalarAttribute subject={subjectEntity} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="SubjectVectorsAttribute"><span class="type-signature">(constant) </span>SubjectVectorsAttribute<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component for displaying the <code>vectors</code> attribute of an subject entity.</p>
+<p>This component checks if the <code>vectors</code> attribute exists on the <code>subject</code> object. If <code>vectors</code> is undefined,
+the component returns <code>null</code> and renders nothing. Otherwise, it maps over the <code>vectors</code> array and
+displays a placeholder message and a JSON representation for each item in the <code>vectors</code>.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Vectors_SubjectVectorsAttribute.jsx.html">Subject/Vectors/SubjectVectorsAttribute.jsx</a>, <a href="Subject_Vectors_SubjectVectorsAttribute.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = {   vectors: [    { id: 1, name: "Vector Item 1" },     { id: 2, name: "Vector Item 2" }  ] };&lt;SubjectVectorsAttribute subject={subjectEntity} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicButton"><span class="type-signature">(constant) </span>TopicButton<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>TopicCUDButton Component</p>
+<p>A higher-order component that dynamically renders one of the following components
+based on the <code>operation</code> prop:</p>
+<ul>
+<li><code>InsertTopicButton</code> for creating a new item (operation &quot;C&quot;)</li>
+<li><code>UpdateTopicButton</code> for updating an existing item (operation &quot;U&quot;)</li>
+<li><code>DeleteTopicButton</code> for deleting an existing item (operation &quot;D&quot;)</li>
+</ul>
+<p>This component validates the <code>topic</code> prop:</p>
+<ul>
+<li>For &quot;C&quot; (create), <code>topic</code> can be any object (no restrictions).</li>
+<li>For &quot;U&quot; (update) and &quot;D&quot; (delete), <code>topic</code> must include an <code>id</code> key.</li>
+</ul>
+<p>If the <code>operation</code> prop is invalid or required conditions for <code>topic</code> are not met,
+an <code>ErrorHandler</code> component is rendered with an appropriate error message.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicCUDButton.jsx.html">Topic/Components/TopicCUDButton.jsx</a>, <a href="Topic_Components_TopicCUDButton.jsx.html#line70">line 70</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example Usageconst Example = () => {  const handleDone = (data) => console.log("Operation completed:", data);  return (    &lt;>      &lt;TopicCUDButton        operation="C"        topic={{ name: "New Item", name_en: "New Item EN" }}        onDone={handleDone}      >        Insert      &lt;/TopicCUDButton>      &lt;TopicCUDButton        operation="U"        topic={{ id: "123", name: "Updated Item", name_en: "Updated Item EN" }}        onDone={handleDone}      >        Update      &lt;/TopicCUDButton>      &lt;TopicCUDButton        operation="D"        topic={{ id: "123" }}        onDone={handleDone}      >        Delete      &lt;/TopicCUDButton>    &lt;/>  );};</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicCardCapsule"><span class="type-signature">(constant) </span>TopicCardCapsule<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A specialized card component that displays an <code>TopicLink</code> as its title and encapsulates additional content.</p>
+<p>This component extends the <code>CardCapsule</code> component by using a combination of a <code>PersonFill</code> icon and
+an <code>TopicLink</code> component in the card's header. The <code>children</code> prop is used to render any content
+inside the card body. It is designed for use with entities represented by the <code>topic</code> object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicCardCapsule.jsx.html">Topic/Components/TopicCardCapsule.jsx</a>, <a href="Topic_Components_TopicCardCapsule.jsx.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:import { TopicCardCapsule } from './TopicCardCapsule';import { Button } from 'react-bootstrap';const topicEntity = { id: 123, name: "Example Entity" };&lt;TopicCardCapsule topic={topicEntity}>  &lt;Button variant="primary">Click Me&lt;/Button>&lt;/TopicCardCapsule></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicChildren"><span class="type-signature">(constant) </span>TopicChildren<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>TopicChildren Component</p>
+<p>A utility React component that wraps its children with the <code>ChildWrapper</code> component,
+passing down an <code>topic</code> entity along with other props to all child elements.
+This component is useful for injecting a common <code>topic</code> entity into multiple children
+while preserving their existing functionality.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicChildren.jsx.html">Topic/Components/TopicChildren.jsx</a>, <a href="Topic_Components_TopicChildren.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = { id: 1, message: "No data available" };&lt;TopicChildren topic={topicEntity}>    &lt;CustomMessage />    &lt;CustomIcon />&lt;/TopicChildren>// Result: Both &lt;CustomMessage /> and &lt;CustomIcon /> receive the 'topic' prop with the specified entity.</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicLargeCard"><span class="type-signature">(constant) </span>TopicLargeCard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A large card component for displaying detailed content and layout for an topic entity.</p>
+<p>This component wraps an <code>TopicCardCapsule</code> with a flexible layout that includes multiple
+columns. It uses a <code>Row</code> layout with a <code>LeftColumn</code> for displaying an <code>TopicMediumCard</code>
+and a <code>MiddleColumn</code> for rendering additional children.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicLargeCard.jsx.html">Topic/Components/TopicLargeCard.jsx</a>, <a href="Topic_Components_TopicLargeCard.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = { id: 123, name: "Sample Entity" };&lt;TopicLargeCard topic={topicEntity}>  &lt;p>Additional content for the middle column.&lt;/p>&lt;/TopicLargeCard></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicMediumCard"><span class="type-signature">(constant) </span>TopicMediumCard<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A card component that displays detailed content for an topic entity.</p>
+<p>This component combines <code>TopicCardCapsule</code> and <code>TopicMediumContent</code> to create a card layout
+with a title and medium-level content. The title includes a <code>PersonFill</code> icon and a link to
+the topic entity's details, while the body displays serialized details of the entity along
+with any additional children passed to the component.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicMediumCard.jsx.html">Topic/Components/TopicMediumCard.jsx</a>, <a href="Topic_Components_TopicMediumCard.jsx.html#line31">line 31</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = { id: 123, name: "Sample Entity" };&lt;TopicMediumCard topic={topicEntity}>  &lt;p>Additional details or actions for the entity.&lt;/p>&lt;/TopicMediumCard></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicMediumContent"><span class="type-signature">(constant) </span>TopicMediumContent<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component that displays medium-level content for an topic entity.</p>
+<p>This component renders a label &quot;TopicMediumContent&quot; followed by a serialized representation of the <code>topic</code> object
+and any additional child content. It is designed to handle and display information about an topic entity object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicMediumContent.jsx.html">Topic/Components/TopicMediumContent.jsx</a>, <a href="Topic_Components_TopicMediumContent.jsx.html#line24">line 24</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = { id: 123, name: "Sample Entity" };&lt;TopicMediumContent topic={topicEntity}>  &lt;p>Additional information about the entity.&lt;/p>&lt;/TopicMediumContent></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicMediumEditableContent"><span class="type-signature">(constant) </span>TopicMediumEditableContent<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component that displays medium-level content for an topic entity.</p>
+<p>This component renders a label &quot;TopicMediumContent&quot; followed by a serialized representation of the <code>topic</code> object
+and any additional child content. It is designed to handle and display information about an topic entity object.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicMediumEditableContent.jsx.html">Topic/Components/TopicMediumEditableContent.jsx</a>, <a href="Topic_Components_TopicMediumEditableContent.jsx.html#line26">line 26</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = { id: 123, name: "Sample Entity" };&lt;TopicMediumContent topic={topicEntity}>  &lt;p>Additional information about the entity.&lt;/p>&lt;/TopicMediumContent></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicPage"><span class="type-signature">(constant) </span>TopicPage<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A page component for displaying lazy-loaded content of an topic entity.</p>
+<p>This component extracts the <code>id</code> parameter from the route using <code>useParams</code>,
+constructs an <code>topic</code> object, and passes it to the <code>TopicPageContentLazy</code> component.
+The <code>TopicPageContentLazy</code> component handles the lazy-loading and rendering of the entity's content.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Pages_TopicPage.jsx.html">Topic/Pages/TopicPage.jsx</a>, <a href="Topic_Pages_TopicPage.jsx.html#line101">line 101</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example route setup:&lt;Route path="/topic/:id" element={&lt;TopicPage />} />// Navigating to "/topic/12345" will render the page for the topic entity with ID 12345.</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicPageContentLazy"><span class="type-signature">(constant) </span>TopicPageContentLazy<span class="type-signature"> :React.Component</span></h4>
+
+
+
+
+<div class="description">
+    <p>A lazy-loading component for displaying content of an topic entity.</p>
+<p>This component is created using <code>createLazyComponent</code> and wraps <code>TopicPageContent</code> to provide
+automatic data fetching for the <code>topic</code> entity. It uses the <code>TopicReadAsyncAction</code> to fetch
+the entity data and dynamically injects it into the wrapped component as the <code>topic</code> prop.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">React.Component</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Pages_TopicPage.jsx.html">Topic/Pages/TopicPage.jsx</a>, <a href="Topic_Pages_TopicPage.jsx.html#line61">line 61</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicId = "12345";&lt;TopicPageContentLazy topic={topicId} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicPageNavbar"><span class="type-signature">(constant) </span>TopicPageNavbar<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>Renders the navigation bar for an Topic page.</p>
+<p>This component uses a custom hook, <code>useHash()</code>, to determine the current hash
+and highlights the active segment. It displays a navigation bar (using MyNavbar)
+with several segments (e.g. &quot;history&quot;, &quot;roles&quot;, &quot;graph&quot;), each rendered as a
+TitleNavButton. The segments are hardcoded in this component and only rendered
+if an <code>topic</code> object is provided.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Pages_TopicPageNavbar.jsx.html">Topic/Pages/TopicPageNavbar.jsx</a>, <a href="Topic_Pages_TopicPageNavbar.jsx.html#line69">line 69</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topic = { id: 123, ... };&lt;TopicPageNavbar topic={topic} onSearchChange={handleSearchChange} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicReadAsyncAction"><span class="type-signature">(constant) </span>TopicReadAsyncAction<span class="type-signature"> :function</span></h4>
+
+
+
+
+<div class="description">
+    <p>An async action for executing a GraphQL query to read topic entities.</p>
+<p>This action is created using <code>createAsyncGraphQLAction</code> with a predefined <code>TopicQueryRead</code> query.
+It can be dispatched with query variables to fetch data related to topic entities from the GraphQL API.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">function</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Queries_TopicReadAsyncAction.jsx.html">Topic/Queries/TopicReadAsyncAction.jsx</a>, <a href="Topic_Queries_TopicReadAsyncAction.jsx.html#line42">line 42</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const queryVariables = { id: "12345" };dispatch(TopicReadAsyncAction(queryVariables))  .then((result) => {    console.log("Fetched data:", result);  })  .catch((error) => {    console.error("Error fetching data:", error);  });</code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicRouterSegment"><span class="type-signature">(constant) </span>TopicRouterSegment<span class="type-signature"> :Object</span></h4>
+
+
+
+
+<div class="description">
+    <p>A router segment definition for the Topic page.</p>
+<p>This object defines a route path and its associated React element.
+The <code>path</code> property is constructed using a base URI stored in <code>TopicURI</code>
+and expects an <code>id</code> parameter. The <code>element</code> property specifies the React
+component to render when the route matches.</p>
+</div>
+
+
+
+    <h5>Type:</h5>
+    <ul>
+        <li>
+            
+<span class="param-type">Object</span>
+
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>path</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The URL path pattern for the route, e.g., &quot;/topic/topic/view/:id&quot;.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>element</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">JSX.Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The React element (component) to render, in this case, <TopicPage />.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Pages_TopicRouterSegment.jsx.html">Topic/Pages/TopicRouterSegment.jsx</a>, <a href="Topic_Pages_TopicRouterSegment.jsx.html#line4">line 4</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+            
+<h4 class="name" id="TopicScalarAttribute"><span class="type-signature">(constant) </span>TopicScalarAttribute<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component for displaying the <code>scalar</code> attribute of an topic entity.</p>
+<p>This component checks if the <code>scalar</code> attribute exists on the <code>topic</code> object. If <code>scalar</code> is undefined,
+the component returns <code>null</code> and renders nothing. Otherwise, it displays a placeholder message
+and a JSON representation of the <code>scalar</code> attribute.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Scalars_TopicScalarAttribute.jsx.html">Topic/Scalars/TopicScalarAttribute.jsx</a>, <a href="Topic_Scalars_TopicScalarAttribute.jsx.html#line21">line 21</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = { scalar: { id: 1, name: "Sample Scalar" } };&lt;TopicScalarAttribute topic={topicEntity} /></code></pre>
+
+
+
+        
+            
+<h4 class="name" id="TopicVectorsAttribute"><span class="type-signature">(constant) </span>TopicVectorsAttribute<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    <p>A component for displaying the <code>vectors</code> attribute of an topic entity.</p>
+<p>This component checks if the <code>vectors</code> attribute exists on the <code>topic</code> object. If <code>vectors</code> is undefined,
+the component returns <code>null</code> and renders nothing. Otherwise, it maps over the <code>vectors</code> array and
+displays a placeholder message and a JSON representation for each item in the <code>vectors</code>.</p>
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Vectors_TopicVectorsAttribute.jsx.html">Topic/Vectors/TopicVectorsAttribute.jsx</a>, <a href="Topic_Vectors_TopicVectorsAttribute.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = {   vectors: [    { id: 1, name: "Vector Item 1" },     { id: 2, name: "Vector Item 2" }  ] };&lt;TopicVectorsAttribute topic={topicEntity} /></code></pre>
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SemesterLink"><span class="type-signature"></span>SemesterLink<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A React component that renders a <code>ProxyLink</code> to an &quot;semester&quot; entity's view page.</p>
+<p>The target URL is dynamically constructed using the <code>semester</code> object's <code>id</code>, and the link displays
+the <code>semester</code> object's <code>name</code> as its clickable content.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the <code>SemesterLink</code> component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>semester</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The object representing the &quot;semester&quot; entity.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the &quot;semester&quot; entity. Used to construct the target URL.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The display name for the &quot;semester&quot; entity. Used as the link text.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Components_SemesterLink.jsx.html">Semester/Components/SemesterLink.jsx</a>, <a href="Semester_Components_SemesterLink.jsx.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>ProxyLink - The base component used for rendering the link.</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A <code>ProxyLink</code> component linking to the specified &quot;semester&quot; entity's view page.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage with a sample semester entity:const semesterEntity = { id: 123, name: "Example Semester Entity" };&lt;SemesterLink semester={semesterEntity} />// Renders: &lt;ProxyLink to="/semester/semester/view/123">Example Semester Entity&lt;/ProxyLink></code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SemesterPageContent"><span class="type-signature"></span>SemesterPageContent<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A page content component for displaying detailed information about a semester entity.</p>
+<p>This component utilizes <code>SemesterLargeCard</code> to create a structured layout and displays
+the serialized representation of the <code>semester</code> object within the card's content.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the SemesterPageContent component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>semester</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The object representing the semester entity.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the semester entity.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name or label of the semester entity.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Pages_SemesterPage.jsx.html">Semester/Pages/SemesterPage.jsx</a>, <a href="Semester_Pages_SemesterPage.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSX element rendering the page content for a semester entity.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const semesterEntity = { id: 123, name: "Sample Entity" };&lt;SemesterPageContent semester={semesterEntity} /></code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SubjectLink"><span class="type-signature"></span>SubjectLink<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A React component that renders a <code>ProxyLink</code> to an &quot;subject&quot; entity's view page.</p>
+<p>The target URL is dynamically constructed using the <code>subject</code> object's <code>id</code>, and the link displays
+the <code>subject</code> object's <code>name</code> as its clickable content.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the <code>SubjectLink</code> component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The object representing the &quot;subject&quot; entity.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the &quot;subject&quot; entity. Used to construct the target URL.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The display name for the &quot;subject&quot; entity. Used as the link text.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Components_SubjectLink.jsx.html">Subject/Components/SubjectLink.jsx</a>, <a href="Subject_Components_SubjectLink.jsx.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>ProxyLink - The base component used for rendering the link.</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A <code>ProxyLink</code> component linking to the specified &quot;subject&quot; entity's view page.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage with a sample subject entity:const subjectEntity = { id: 123, name: "Example Subject Entity" };&lt;SubjectLink subject={subjectEntity} />// Renders: &lt;ProxyLink to="/subject/subject/view/123">Example Subject Entity&lt;/ProxyLink></code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="SubjectPageContent"><span class="type-signature"></span>SubjectPageContent<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A page content component for displaying detailed information about an subject entity.</p>
+<p>This component utilizes <code>SubjectLargeCard</code> to create a structured layout and displays
+the serialized representation of the <code>subject</code> object within the card's content.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the SubjectPageContent component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The object representing the subject entity.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the subject entity.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name or label of the subject entity.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Pages_SubjectPage.jsx.html">Subject/Pages/SubjectPage.jsx</a>, <a href="Subject_Pages_SubjectPage.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSX element rendering the page content for an subject entity.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const subjectEntity = { id: 123, name: "Sample Entity" };&lt;SubjectPageContent subject={subjectEntity} /></code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="TitleNavButton"><span class="type-signature"></span>TitleNavButton<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A navigation button component that generates a URL based on the semester's ID and a specific segment.
+The button uses a <code>ProxyLink</code> to navigate while preserving hash and query parameters.</p>
+<h3>Features:</h3>
+<ul>
+<li>Dynamically constructs the URL with a hash fragment pointing to the specified segment.</li>
+<li>Displays a label for the navigation link.</li>
+<li>Integrates seamlessly with <code>ProxyLink</code> for enhanced navigation.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the TitleNavButton component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>semester</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The semester object containing details about the semester.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the semester.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>segment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The segment to append as a hash fragment in the URL.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The text to display as the label for the navigation button.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Semester_Pages_SemesterPageNavbar.jsx.html">Semester/Pages/SemesterPageNavbar.jsx</a>, <a href="Semester_Pages_SemesterPageNavbar.jsx.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A styled navigation button linking to the constructed URL.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Example 1: Basic usage with a semester and segmentconst semester = { id: 123 };const segment = "details";const label = "View Details";&lt;TitleNavButton semester={semester} segment={segment} label={label} />// Resulting URL: `/ug/semester/view/123#details`</code></pre>
+
+    <pre class="prettyprint"><code>// Example 2: Different segment and label&lt;TitleNavButton semester={{ id: 456 }} segment="settings" label="Semester Settings" />// Resulting URL: `/ug/semester/view/456#settings`</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="TitleNavButton"><span class="type-signature"></span>TitleNavButton<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A navigation button component that generates a URL based on the subject's ID and a specific segment.
+The button uses a <code>ProxyLink</code> to navigate while preserving hash and query parameters.</p>
+<h3>Features:</h3>
+<ul>
+<li>Dynamically constructs the URL with a hash fragment pointing to the specified segment.</li>
+<li>Displays a label for the navigation link.</li>
+<li>Integrates seamlessly with <code>ProxyLink</code> for enhanced navigation.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the TitleNavButton component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>subject</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The subject object containing details about the subject.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the subject.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>segment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The segment to append as a hash fragment in the URL.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The text to display as the label for the navigation button.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Subject_Pages_SubjectPageNavbar.jsx.html">Subject/Pages/SubjectPageNavbar.jsx</a>, <a href="Subject_Pages_SubjectPageNavbar.jsx.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A styled navigation button linking to the constructed URL.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Example 1: Basic usage with a subject and segmentconst subject = { id: 123 };const segment = "details";const label = "View Details";&lt;TitleNavButton subject={subject} segment={segment} label={label} />// Resulting URL: `/ug/subject/view/123#details`</code></pre>
+
+    <pre class="prettyprint"><code>// Example 2: Different segment and label&lt;TitleNavButton subject={{ id: 456 }} segment="settings" label="Subject Settings" />// Resulting URL: `/ug/subject/view/456#settings`</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="TitleNavButton"><span class="type-signature"></span>TitleNavButton<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A navigation button component that generates a URL based on the topic's ID and a specific segment.
+The button uses a <code>ProxyLink</code> to navigate while preserving hash and query parameters.</p>
+<h3>Features:</h3>
+<ul>
+<li>Dynamically constructs the URL with a hash fragment pointing to the specified segment.</li>
+<li>Displays a label for the navigation link.</li>
+<li>Integrates seamlessly with <code>ProxyLink</code> for enhanced navigation.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the TitleNavButton component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>topic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The topic object containing details about the topic.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the topic.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>segment</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The segment to append as a hash fragment in the URL.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>label</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The text to display as the label for the navigation button.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Pages_TopicPageNavbar.jsx.html">Topic/Pages/TopicPageNavbar.jsx</a>, <a href="Topic_Pages_TopicPageNavbar.jsx.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A styled navigation button linking to the constructed URL.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Examples</h5>
+    
+    <pre class="prettyprint"><code>// Example 1: Basic usage with a topic and segmentconst topic = { id: 123 };const segment = "details";const label = "View Details";&lt;TitleNavButton topic={topic} segment={segment} label={label} />// Resulting URL: `/ug/topic/view/123#details`</code></pre>
+
+    <pre class="prettyprint"><code>// Example 2: Different segment and label&lt;TitleNavButton topic={{ id: 456 }} segment="settings" label="Topic Settings" />// Resulting URL: `/ug/topic/view/456#settings`</code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="TopicLink"><span class="type-signature"></span>TopicLink<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A React component that renders a <code>ProxyLink</code> to an &quot;topic&quot; entity's view page.</p>
+<p>The target URL is dynamically constructed using the <code>topic</code> object's <code>id</code>, and the link displays
+the <code>topic</code> object's <code>name</code> as its clickable content.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the <code>TopicLink</code> component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>topic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The object representing the &quot;topic&quot; entity.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the &quot;topic&quot; entity. Used to construct the target URL.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The display name for the &quot;topic&quot; entity. Used as the link text.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Components_TopicLink.jsx.html">Topic/Components/TopicLink.jsx</a>, <a href="Topic_Components_TopicLink.jsx.html#line5">line 5</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+    <dt class="tag-see">See:</dt>
+    <dd class="tag-see">
+        <ul>
+            <li>ProxyLink - The base component used for rendering the link.</li>
+        </ul>
+    </dd>
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A <code>ProxyLink</code> component linking to the specified &quot;topic&quot; entity's view page.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage with a sample topic entity:const topicEntity = { id: 123, name: "Example Topic Entity" };&lt;TopicLink topic={topicEntity} />// Renders: &lt;ProxyLink to="/topic/topic/view/123">Example Topic Entity&lt;/ProxyLink></code></pre>
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="TopicPageContent"><span class="type-signature"></span>TopicPageContent<span class="signature">(props)</span><span class="type-signature"> &rarr; {JSX.Element}</span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>A page content component for displaying detailed information about an topic entity.</p>
+<p>This component utilizes <code>TopicLargeCard</code> to create a structured layout and displays
+the serialized representation of the <code>topic</code> object within the card's content.</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>props</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The properties for the TopicPageContent component.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>topic</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The object representing the topic entity.</p>
+                <h6>Properties</h6>
+                
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The unique identifier for the topic entity.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>name</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The name or label of the topic entity.</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+            </td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="Topic_Pages_TopicPage.jsx.html">Topic/Pages/TopicPage.jsx</a>, <a href="Topic_Pages_TopicPage.jsx.html#line30">line 30</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <p>A JSX element rendering the page content for an topic entity.</p>
+</div>
+
+
+
+<dl>
+    <dt>
+        Type
+    </dt>
+    <dd>
+        
+<span class="param-type">JSX.Element</span>
+
+
+    </dd>
+</dl>
+
+    
+
+
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>// Example usage:const topicEntity = { id: 123, name: "Sample Entity" };&lt;TopicPageContent topic={topicEntity} /></code></pre>
+
+
+
+        
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#SemesterButton">SemesterButton</a></li><li><a href="global.html#SemesterCardCapsule">SemesterCardCapsule</a></li><li><a href="global.html#SemesterChildren">SemesterChildren</a></li><li><a href="global.html#SemesterLargeCard">SemesterLargeCard</a></li><li><a href="global.html#SemesterLink">SemesterLink</a></li><li><a href="global.html#SemesterMediumCard">SemesterMediumCard</a></li><li><a href="global.html#SemesterMediumContent">SemesterMediumContent</a></li><li><a href="global.html#SemesterMediumEditableContent">SemesterMediumEditableContent</a></li><li><a href="global.html#SemesterPage">SemesterPage</a></li><li><a href="global.html#SemesterPageContent">SemesterPageContent</a></li><li><a href="global.html#SemesterPageContentLazy">SemesterPageContentLazy</a></li><li><a href="global.html#SemesterPageNavbar">SemesterPageNavbar</a></li><li><a href="global.html#SemesterReadAsyncAction">SemesterReadAsyncAction</a></li><li><a href="global.html#SemesterRouterSegment">SemesterRouterSegment</a></li><li><a href="global.html#SemesterScalarAttribute">SemesterScalarAttribute</a></li><li><a href="global.html#SemesterVectorsAttribute">SemesterVectorsAttribute</a></li><li><a href="global.html#SubjectButton">SubjectButton</a></li><li><a href="global.html#SubjectCardCapsule">SubjectCardCapsule</a></li><li><a href="global.html#SubjectChildren">SubjectChildren</a></li><li><a href="global.html#SubjectLargeCard">SubjectLargeCard</a></li><li><a href="global.html#SubjectLink">SubjectLink</a></li><li><a href="global.html#SubjectMediumCard">SubjectMediumCard</a></li><li><a href="global.html#SubjectMediumContent">SubjectMediumContent</a></li><li><a href="global.html#SubjectMediumEditableContent">SubjectMediumEditableContent</a></li><li><a href="global.html#SubjectPage">SubjectPage</a></li><li><a href="global.html#SubjectPageContent">SubjectPageContent</a></li><li><a href="global.html#SubjectPageContentLazy">SubjectPageContentLazy</a></li><li><a href="global.html#SubjectPageNavbar">SubjectPageNavbar</a></li><li><a href="global.html#SubjectReadAsyncAction">SubjectReadAsyncAction</a></li><li><a href="global.html#SubjectRouterSegment">SubjectRouterSegment</a></li><li><a href="global.html#SubjectScalarAttribute">SubjectScalarAttribute</a></li><li><a href="global.html#SubjectVectorsAttribute">SubjectVectorsAttribute</a></li><li><a href="global.html#TitleNavButton">TitleNavButton</a></li><li><a href="global.html#TopicButton">TopicButton</a></li><li><a href="global.html#TopicCardCapsule">TopicCardCapsule</a></li><li><a href="global.html#TopicChildren">TopicChildren</a></li><li><a href="global.html#TopicLargeCard">TopicLargeCard</a></li><li><a href="global.html#TopicLink">TopicLink</a></li><li><a href="global.html#TopicMediumCard">TopicMediumCard</a></li><li><a href="global.html#TopicMediumContent">TopicMediumContent</a></li><li><a href="global.html#TopicMediumEditableContent">TopicMediumEditableContent</a></li><li><a href="global.html#TopicPage">TopicPage</a></li><li><a href="global.html#TopicPageContent">TopicPageContent</a></li><li><a href="global.html#TopicPageContentLazy">TopicPageContentLazy</a></li><li><a href="global.html#TopicPageNavbar">TopicPageNavbar</a></li><li><a href="global.html#TopicReadAsyncAction">TopicReadAsyncAction</a></li><li><a href="global.html#TopicRouterSegment">TopicRouterSegment</a></li><li><a href="global.html#TopicScalarAttribute">TopicScalarAttribute</a></li><li><a href="global.html#TopicVectorsAttribute">TopicVectorsAttribute</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sun Jul 27 2025 20:41:38 GMT+0200 (středoevropský letní čas)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

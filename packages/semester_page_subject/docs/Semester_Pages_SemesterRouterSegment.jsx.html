@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Semester/Pages/SemesterRouterSegment.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Semester/Pages/SemesterRouterSegment.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { SemesterURI } from "../Components/SemesterLink"
+import { SemesterPage } from "./SemesterPage"
+
+/**
+ * A router segment definition for the Semester page.
+ *
+ * This object defines a route path and its associated React element.
+ * The `path` property is constructed using a base URI stored in `SemesterURI`
+ * and expects an `id` parameter. The `element` property specifies the React
+ * component to render when the route matches.
+ *
+ * @constant {Object} SemesterRouterSegment
+ * @property {string} path - The URL path pattern for the route, e.g., "/semester/semester/view/:id".
+ * @property {JSX.Element} element - The React element (component) to render, in this case, &lt;SemesterPage />.
+ */
+export const SemesterRouterSegment = {
+    path: `/${SemesterURI}:id`,
+    element: &lt;SemesterPage />,
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#SemesterButton">SemesterButton</a></li><li><a href="global.html#SemesterCardCapsule">SemesterCardCapsule</a></li><li><a href="global.html#SemesterChildren">SemesterChildren</a></li><li><a href="global.html#SemesterLargeCard">SemesterLargeCard</a></li><li><a href="global.html#SemesterLink">SemesterLink</a></li><li><a href="global.html#SemesterMediumCard">SemesterMediumCard</a></li><li><a href="global.html#SemesterMediumContent">SemesterMediumContent</a></li><li><a href="global.html#SemesterMediumEditableContent">SemesterMediumEditableContent</a></li><li><a href="global.html#SemesterPage">SemesterPage</a></li><li><a href="global.html#SemesterPageContent">SemesterPageContent</a></li><li><a href="global.html#SemesterPageContentLazy">SemesterPageContentLazy</a></li><li><a href="global.html#SemesterPageNavbar">SemesterPageNavbar</a></li><li><a href="global.html#SemesterReadAsyncAction">SemesterReadAsyncAction</a></li><li><a href="global.html#SemesterRouterSegment">SemesterRouterSegment</a></li><li><a href="global.html#SemesterScalarAttribute">SemesterScalarAttribute</a></li><li><a href="global.html#SemesterVectorsAttribute">SemesterVectorsAttribute</a></li><li><a href="global.html#SubjectButton">SubjectButton</a></li><li><a href="global.html#SubjectCardCapsule">SubjectCardCapsule</a></li><li><a href="global.html#SubjectChildren">SubjectChildren</a></li><li><a href="global.html#SubjectLargeCard">SubjectLargeCard</a></li><li><a href="global.html#SubjectLink">SubjectLink</a></li><li><a href="global.html#SubjectMediumCard">SubjectMediumCard</a></li><li><a href="global.html#SubjectMediumContent">SubjectMediumContent</a></li><li><a href="global.html#SubjectMediumEditableContent">SubjectMediumEditableContent</a></li><li><a href="global.html#SubjectPage">SubjectPage</a></li><li><a href="global.html#SubjectPageContent">SubjectPageContent</a></li><li><a href="global.html#SubjectPageContentLazy">SubjectPageContentLazy</a></li><li><a href="global.html#SubjectPageNavbar">SubjectPageNavbar</a></li><li><a href="global.html#SubjectReadAsyncAction">SubjectReadAsyncAction</a></li><li><a href="global.html#SubjectRouterSegment">SubjectRouterSegment</a></li><li><a href="global.html#SubjectScalarAttribute">SubjectScalarAttribute</a></li><li><a href="global.html#SubjectVectorsAttribute">SubjectVectorsAttribute</a></li><li><a href="global.html#TitleNavButton">TitleNavButton</a></li><li><a href="global.html#TopicButton">TopicButton</a></li><li><a href="global.html#TopicCardCapsule">TopicCardCapsule</a></li><li><a href="global.html#TopicChildren">TopicChildren</a></li><li><a href="global.html#TopicLargeCard">TopicLargeCard</a></li><li><a href="global.html#TopicLink">TopicLink</a></li><li><a href="global.html#TopicMediumCard">TopicMediumCard</a></li><li><a href="global.html#TopicMediumContent">TopicMediumContent</a></li><li><a href="global.html#TopicMediumEditableContent">TopicMediumEditableContent</a></li><li><a href="global.html#TopicPage">TopicPage</a></li><li><a href="global.html#TopicPageContent">TopicPageContent</a></li><li><a href="global.html#TopicPageContentLazy">TopicPageContentLazy</a></li><li><a href="global.html#TopicPageNavbar">TopicPageNavbar</a></li><li><a href="global.html#TopicReadAsyncAction">TopicReadAsyncAction</a></li><li><a href="global.html#TopicRouterSegment">TopicRouterSegment</a></li><li><a href="global.html#TopicScalarAttribute">TopicScalarAttribute</a></li><li><a href="global.html#TopicVectorsAttribute">TopicVectorsAttribute</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sun Jul 27 2025 20:41:38 GMT+0200 (středoevropský letní čas)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Semester/Pages/SemesterPage.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Semester/Pages/SemesterPage.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from "react";
+import { useParams } from "react-router";
+import { CreateDelayer, ErrorHandler, LoadingSpinner } from "@hrbolek/uoisfrontend-shared";
+import { useAsyncAction } from "@hrbolek/uoisfrontend-gql-shared";
+import { SemesterLargeCard } from "../Components";
+import { SemesterReadAsyncAction } from "../Queries";
+import { SemesterPageNavbar } from "./SemesterPageNavbar";
+import { TopicButton } from "../../Topic/Components";
+
+/**
+ * A page content component for displaying detailed information about a semester entity.
+ *
+ * This component utilizes `SemesterLargeCard` to create a structured layout and displays 
+ * the serialized representation of the `semester` object within the card's content.
+ *
+ * @component
+ * @param {Object} props - The properties for the SemesterPageContent component.
+ * @param {Object} props.semester - The object representing the semester entity.
+ * @param {string|number} props.semester.id - The unique identifier for the semester entity.
+ * @param {string} props.semester.name - The name or label of the semester entity.
+ *
+ * @returns {JSX.Element} A JSX element rendering the page content for a semester entity.
+ *
+ * @example
+ * // Example usage:
+ * const semesterEntity = { id: 123, name: "Sample Entity" };
+ * 
+ * &lt;SemesterPageContent semester={semesterEntity} />
+ */
+const SemesterPageContent = ({ semester }) => {
+    const [activeButton, setActiveButton] = useState(null);
+    const [description, setDescription] = useState("");
+    const [activeTab, setActiveTab] = useState("main");
+    const [openTopic, setOpenTopic] = useState(null);
+
+    const handleDone = (data) => {
+        console.log("SemesterPageContent.handleDone.data", data);
+    };
+
+    const handleButtonClick = (button) => {
+        setActiveButton(button);
+    };
+
+    return (
+        &lt;>
+            &lt;SemesterPageNavbar semester={semester} />
+            &lt;SemesterLargeCard semester={semester}>
+                {/* Tabs navigation */}
+                &lt;ul className="nav nav-tabs mb-3">
+                    &lt;li className="nav-item">
+                        &lt;button
+                            className={`nav-link${activeTab === "main" ? " active" : ""}`}
+                            onClick={() => setActiveTab("main")}
+                        >
+                            Témata akreditovaného studia
+                        &lt;/button>
+                    &lt;/li>
+                    &lt;li className="nav-item">
+                        &lt;button
+                            className={`nav-link${activeTab === "guarants" ? " active" : ""}`}
+                            onClick={() => setActiveTab("guarants")}
+                        >
+                            Seznam garantů
+                        &lt;/button>
+                    &lt;/li>
+                    &lt;li className="nav-item">
+                        &lt;button
+                            className={`nav-link${activeTab === "classification" ? " active" : ""}`}
+                            onClick={() => setActiveTab("classification")}
+                        >
+                            Druhy klasifikace
+                        &lt;/button>
+                    &lt;/li>
+                    &lt;li className="nav-item">
+                        &lt;button
+                            className={`nav-link${activeTab === "studyplan" ? " active" : ""}`}
+                            onClick={() => setActiveTab("studyplan")}
+                        >
+                            Založení plánu studia předmětu
+                        &lt;/button>
+                    &lt;/li>
+                &lt;/ul>
+
+                {/* Tab content */}
+                {activeTab === "main" &amp;&amp; (
+                    &lt;div className="p-3">
+                        &lt;h5>Témata akreditovaného studia&lt;/h5>
+                        {/* Topics výpis s vyjížděcí lištou */}
+                        {Array.isArray(semester.topics) &amp;&amp; semester.topics.length > 0 &amp;&amp; (
+                            &lt;ul className="list-group mb-3">
+                                {semester.topics.map((topic, idx) => (
+                                    &lt;li key={idx} className="list-group-item">
+                                        &lt;button
+                                            type="button"
+                                            className="btn btn-link p-0"
+                                            style={{
+                                                fontWeight: "bold",
+                                                color: "#0d6efd",
+                                                textDecoration: "none"
+                                            }}
+                                            onClick={() => setOpenTopic(openTopic === idx ? null : idx)}
+                                        >
+                                            {topic.name}
+                                        &lt;/button>
+                                        &lt;div
+                                            className={`collapse${openTopic === idx ? " show" : ""}`}
+                                            style={{
+                                                transition: "height 0.3s ease",
+                                                overflow: "hidden"
+                                            }}
+                                        >
+                                            {openTopic === idx &amp;&amp; (
+                                                &lt;div className="mt-2 ms-3">
+                                                    &lt;div>
+                                                        &lt;strong>Created:&lt;/strong>{" "}
+                                                        {topic.created
+                                                            ? new Date(topic.created).toLocaleDateString() +
+                                                              " " +
+                                                              new Date(topic.created).toLocaleTimeString()
+                                                            : ""}
+                                                    &lt;/div>
+                                                &lt;/div>
+                                            )}
+                                        &lt;/div>
+                                    &lt;/li>
+                                ))}
+                            &lt;/ul>
+                        )}
+                        {/* Pokud nejsou topics, zobraz defaultní text */}
+                        {(!semester.topics || semester.topics.length === 0) &amp;&amp; (
+                            &lt;div className="text-muted">Zde bude obsah pro témata akreditovaného studia.&lt;/div>
+                        )}
+                        {/* Buttons for topics */}
+                        &lt;div className="d-flex flex-row align-items-start gap-2 mb-3">
+                            &lt;TopicButton
+                                operation="C"
+                                topic={{ name: "New Topic" }}
+                                onDone={() => {}}
+                                className={`btn btn-success btn-sm${activeButton === "C" ? " active" : ""}`}
+                                onClick={() => handleButtonClick("C")}
+                            >
+                                Přidání tématu
+                            &lt;/TopicButton>
+                            &lt;TopicButton
+                                operation="D"
+                                topic={semester}
+                                onDone={() => {}}
+                                className={`btn btn-danger btn-sm${activeButton === "D" ? " active" : ""}`}
+                                onClick={() => handleButtonClick("D")}
+                            >
+                                Odebrání tématu
+                            &lt;/TopicButton>
+                            &lt;TopicButton
+                                operation="U"
+                                topic={semester}
+                                onDone={() => {}}
+                                className={`btn btn-primary btn-sm${activeButton === "U" ? " active" : ""}`}
+                                onClick={() => handleButtonClick("U")}
+                            >
+                                Update tématu
+                            &lt;/TopicButton>
+                        &lt;/div>
+                    &lt;/div>
+                )}
+
+                {activeTab === "guarants" &amp;&amp; (
+                    &lt;div className="p-3">
+                        &lt;h5>Garant předmětu&lt;/h5>
+                        &lt;ul className="list-group">
+                            {Array.isArray(semester.subject)
+                                ? semester.subject.map((subj, subjIdx) =>
+                                    subj.guarantors &amp;&amp; subj.guarantors.id ? (
+                                        &lt;li key={subjIdx + "-" + subj.guarantors.id} className="list-group-item">
+                                            &lt;strong>ID:&lt;/strong> {subj.guarantors.id}
+                                        &lt;/li>
+                                    ) : (
+                                        &lt;li key={subjIdx + "-none"} className="list-group-item text-muted">
+                                            Žádní garanti nejsou přiřazeni.
+                                        &lt;/li>
+                                    )
+                                )
+                                : semester.subject?.guarantors &amp;&amp; semester.subject.guarantors.id ? (
+                                    &lt;li className="list-group-item">
+                                        &lt;strong>ID:&lt;/strong> {semester.subject.guarantors.id}
+                                    &lt;/li>
+                                ) : (
+                                    &lt;li className="list-group-item text-muted">Žádní garanti nejsou přiřazeni.&lt;/li>
+                                )
+                            }
+                        &lt;/ul>
+                    &lt;/div>
+                )}
+
+                {activeTab === "classification" &amp;&amp; (
+                    &lt;div className="p-3">
+                        &lt;h5>Druhy klasifikace&lt;/h5>
+                        {semester.classificationtypeId ? (
+                            &lt;div>
+                                &lt;strong>ID:&lt;/strong> {semester.classificationtypeId}
+                            &lt;/div>
+                        ) : (
+                            &lt;div className="text-muted">Zde bude obsah pro druhy klasifikace.&lt;/div>
+                        )}
+                    &lt;/div>
+                )}
+
+                {activeTab === "studyplan" &amp;&amp; (
+                    &lt;div className="p-3">
+                        &lt;h5>Založení plánu studia předmětu&lt;/h5>
+                        &lt;form>
+                            &lt;div className="mb-3">
+                                &lt;label htmlFor="studyplan-date" className="form-label">Kdy byl studijní plán založen&lt;/label>
+                                &lt;input type="date" className="form-control" id="studyplan-date" name="studyplan-date" />
+                            &lt;/div>
+                            &lt;div className="mb-3">
+                                &lt;label htmlFor="studyplan-author" className="form-label">Kým byl studijní plán založen&lt;/label>
+                                &lt;input type="text" className="form-control" id="studyplan-author" name="studyplan-author" placeholder="Zadejte jméno" />
+                            &lt;/div>
+                            &lt;button type="button" className="btn btn-primary">Založit studijní plán&lt;/button>
+                        &lt;/form>
+                    &lt;/div>
+                )}
+            &lt;/SemesterLargeCard>
+        &lt;/>
+    );
+};
+
+/**
+ * A lazy-loading component for displaying content of a semester entity.
+ *
+ * This component is created using `createLazyComponent` and wraps `SemesterPageContent` to provide
+ * automatic data fetching for the `semester` entity. It uses the `SemesterReadAsyncAction` to fetch
+ * the entity data and dynamically injects it into the wrapped component as the `semester` prop.
+ *
+ * @constant
+ * @type {React.Component}
+ *
+ * @param {Object} props - The props for the lazy-loading component.
+ * @param {string|number} props.semester - The identifier of the semester entity to fetch and display.
+ *
+ * @returns {JSX.Element} A component that fetches the `semester` entity data and displays it
+ * using `SemesterPageContent`, or shows loading and error states as appropriate.
+ *
+ * @example
+ * // Example usage:
+ * const semesterId = "12345";
+ *
+ * &lt;SemesterPageContentLazy semester={semesterId} />
+ */
+const SemesterPageContentLazy = ({ semester }) => {
+    const { error, loading, entity, fetch } = useAsyncAction(SemesterReadAsyncAction, semester);
+    const [delayer] = useState(() => CreateDelayer());
+
+    const handleChange = async (e) => {
+        const data = e.target.value;
+        await delayer(() => fetch(data));
+    };
+    const handleBlur = async (e) => {
+        const data = e.target.value;
+        await delayer(() => fetch(data));
+    };
+
+    return (
+        &lt;>
+            {loading &amp;&amp; &lt;LoadingSpinner />}
+            {error &amp;&amp; &lt;ErrorHandler errors={error} />}
+            {entity &amp;&amp; &lt;SemesterPageContent semester={entity} onChange={handleChange} onBlur={handleBlur} />}
+        &lt;/>
+    );
+};
+
+/**
+ * A page component for displaying lazy-loaded content of a semester entity.
+ *
+ * This component extracts the `id` parameter from the route using `useParams`,
+ * constructs a `semester` object, and passes it to the `SemesterPageContentLazy` component.
+ * The `SemesterPageContentLazy` component handles the lazy-loading and rendering of the entity's content.
+ *
+ * @component
+ * @returns {JSX.Element} The rendered page component displaying the lazy-loaded content for the semester entity.
+ *
+ * @example
+ * // Example route setup:
+ * &lt;Route path="/semester/:id" element={&lt;SemesterPage />} />
+ *
+ * // Navigating to "/semester/12345" will render the page for the semester entity with ID 12345.
+ */
+export const SemesterPage = () => {
+    const { id } = useParams();
+    const semester = { id } ? { id } : null;
+    return &lt;SemesterPageContentLazy semester={semester} />;
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#SemesterButton">SemesterButton</a></li><li><a href="global.html#SemesterCardCapsule">SemesterCardCapsule</a></li><li><a href="global.html#SemesterChildren">SemesterChildren</a></li><li><a href="global.html#SemesterLargeCard">SemesterLargeCard</a></li><li><a href="global.html#SemesterLink">SemesterLink</a></li><li><a href="global.html#SemesterMediumCard">SemesterMediumCard</a></li><li><a href="global.html#SemesterMediumContent">SemesterMediumContent</a></li><li><a href="global.html#SemesterMediumEditableContent">SemesterMediumEditableContent</a></li><li><a href="global.html#SemesterPage">SemesterPage</a></li><li><a href="global.html#SemesterPageContent">SemesterPageContent</a></li><li><a href="global.html#SemesterPageContentLazy">SemesterPageContentLazy</a></li><li><a href="global.html#SemesterPageNavbar">SemesterPageNavbar</a></li><li><a href="global.html#SemesterReadAsyncAction">SemesterReadAsyncAction</a></li><li><a href="global.html#SemesterRouterSegment">SemesterRouterSegment</a></li><li><a href="global.html#SemesterScalarAttribute">SemesterScalarAttribute</a></li><li><a href="global.html#SemesterVectorsAttribute">SemesterVectorsAttribute</a></li><li><a href="global.html#SubjectButton">SubjectButton</a></li><li><a href="global.html#SubjectCardCapsule">SubjectCardCapsule</a></li><li><a href="global.html#SubjectChildren">SubjectChildren</a></li><li><a href="global.html#SubjectLargeCard">SubjectLargeCard</a></li><li><a href="global.html#SubjectLink">SubjectLink</a></li><li><a href="global.html#SubjectMediumCard">SubjectMediumCard</a></li><li><a href="global.html#SubjectMediumContent">SubjectMediumContent</a></li><li><a href="global.html#SubjectMediumEditableContent">SubjectMediumEditableContent</a></li><li><a href="global.html#SubjectPage">SubjectPage</a></li><li><a href="global.html#SubjectPageContent">SubjectPageContent</a></li><li><a href="global.html#SubjectPageContentLazy">SubjectPageContentLazy</a></li><li><a href="global.html#SubjectPageNavbar">SubjectPageNavbar</a></li><li><a href="global.html#SubjectReadAsyncAction">SubjectReadAsyncAction</a></li><li><a href="global.html#SubjectRouterSegment">SubjectRouterSegment</a></li><li><a href="global.html#SubjectScalarAttribute">SubjectScalarAttribute</a></li><li><a href="global.html#SubjectVectorsAttribute">SubjectVectorsAttribute</a></li><li><a href="global.html#TitleNavButton">TitleNavButton</a></li><li><a href="global.html#TopicButton">TopicButton</a></li><li><a href="global.html#TopicCardCapsule">TopicCardCapsule</a></li><li><a href="global.html#TopicChildren">TopicChildren</a></li><li><a href="global.html#TopicLargeCard">TopicLargeCard</a></li><li><a href="global.html#TopicLink">TopicLink</a></li><li><a href="global.html#TopicMediumCard">TopicMediumCard</a></li><li><a href="global.html#TopicMediumContent">TopicMediumContent</a></li><li><a href="global.html#TopicMediumEditableContent">TopicMediumEditableContent</a></li><li><a href="global.html#TopicPage">TopicPage</a></li><li><a href="global.html#TopicPageContent">TopicPageContent</a></li><li><a href="global.html#TopicPageContentLazy">TopicPageContentLazy</a></li><li><a href="global.html#TopicPageNavbar">TopicPageNavbar</a></li><li><a href="global.html#TopicReadAsyncAction">TopicReadAsyncAction</a></li><li><a href="global.html#TopicRouterSegment">TopicRouterSegment</a></li><li><a href="global.html#TopicScalarAttribute">TopicScalarAttribute</a></li><li><a href="global.html#TopicVectorsAttribute">TopicVectorsAttribute</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Sun Jul 27 2025 20:41:38 GMT+0200 (středoevropský letní čas)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
